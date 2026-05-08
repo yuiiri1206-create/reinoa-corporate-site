@@ -1,0 +1,83 @@
+<?php get_header(); ?>
+
+<main id="main" class="site-main" role="main">
+
+	<div class="page-hero">
+		<div class="container">
+			<span class="page-hero__en">News &amp; Topics</span>
+			<h1 class="page-hero__title"><?php _e( 'ニュース', 'reinoa' ); ?></h1>
+		</div>
+	</div>
+
+	<?php reinoa_breadcrumb(); ?>
+
+	<section class="section">
+		<div class="container">
+
+			<!-- Category Filter -->
+			<?php
+			$post_type = get_post_type();
+			$taxonomy  = $post_type === 'news' ? 'news_category' : 'category';
+			$terms     = get_terms( array( 'taxonomy' => $taxonomy, 'hide_empty' => true ) );
+			if ( ! is_wp_error( $terms ) && $terms ) :
+			?>
+				<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--color-border);">
+					<a href="<?php echo esc_url( get_post_type_archive_link( $post_type ) ); ?>"
+					   style="display:inline-block;padding:8px 20px;border:1px solid var(--color-primary);font-size:12px;color:var(--color-primary);letter-spacing:0.1em;transition:all 0.3s;"
+					   onmouseover="this.style.background='var(--color-primary)';this.style.color='#fff';"
+					   onmouseout="this.style.background='';this.style.color='var(--color-primary)';">
+						<?php _e( 'すべて', 'reinoa' ); ?>
+					</a>
+					<?php foreach ( $terms as $term ) : ?>
+						<a href="<?php echo esc_url( get_term_link( $term ) ); ?>"
+						   style="display:inline-block;padding:8px 20px;border:1px solid var(--color-border);font-size:12px;color:var(--color-text-light);letter-spacing:0.1em;transition:all 0.3s;"
+						   onmouseover="this.style.borderColor='var(--color-primary)';this.style.color='var(--color-primary)';"
+						   onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-text-light)';">
+							<?php echo esc_html( $term->name ); ?>
+						</a>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
+
+			<?php if ( have_posts() ) : ?>
+
+				<div class="news__list">
+					<?php while ( have_posts() ) : the_post(); ?>
+						<article id="post-<?php the_ID(); ?>" <?php post_class( 'news-item' ); ?>>
+							<time class="news-item__date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
+								<?php echo get_the_date( 'Y.m.d' ); ?>
+							</time>
+							<span class="news-item__category">
+								<?php echo esc_html( reinoa_get_news_category( get_the_ID() ) ); ?>
+							</span>
+							<h2 class="news-item__title">
+								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+							</h2>
+						</article>
+					<?php endwhile; ?>
+				</div>
+
+				<div class="pagination">
+					<?php
+					the_posts_pagination( array(
+						'mid_size'  => 2,
+						'prev_text' => '&laquo; 前へ',
+						'next_text' => '次へ &raquo;',
+					) );
+					?>
+				</div>
+
+			<?php else : ?>
+
+				<div style="text-align:center;padding:80px 0;">
+					<p style="color:var(--color-text-light);"><?php _e( '記事が見つかりませんでした。', 'reinoa' ); ?></p>
+				</div>
+
+			<?php endif; ?>
+
+		</div>
+	</section>
+
+</main>
+
+<?php get_footer(); ?>
