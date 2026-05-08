@@ -10,80 +10,78 @@ get_header();
 	<div class="page-hero">
 		<div class="container">
 			<span class="page-hero__en">About Us</span>
-			<h1 class="page-hero__title"><?php _e( '会社概要', 'reinoa' ); ?></h1>
+			<h1 class="page-hero__title">会社概要</h1>
 		</div>
 	</div>
 
 	<?php reinoa_breadcrumb(); ?>
 
-	<!-- Mission Section -->
+	<!-- Mission -->
 	<section class="section">
 		<div class="container">
 			<div style="max-width:800px;margin:0 auto;text-align:center;">
 				<span class="section-header__en" style="display:block;font-family:var(--font-en);font-size:13px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:16px;">Our Mission</span>
-				<h2 style="font-size:clamp(24px,3.5vw,40px);font-family:var(--font-heading);font-weight:400;color:var(--color-primary);margin-bottom:32px;line-height:1.5;letter-spacing:0.05em;">
-					テクノロジーで、<br>日本のビジネスを前進させる。
+				<h2 style="font-size:clamp(22px,3.5vw,38px);font-family:var(--font-heading);font-weight:400;color:var(--color-primary);margin-bottom:32px;line-height:1.5;letter-spacing:0.05em;">
+					補助金を、中小企業の<br>「攻めの武器」にする。
 				</h2>
-				<p style="font-size:16px;color:var(--color-text-light);line-height:2.2;">
-					株式会社レイノアは「テクノロジーと人をつなぎ、新たな価値を創造する」というミッションのもと、2010年に設立されました。私たちは、最先端のデジタル技術とビジネスの深い理解を組み合わせ、お客様の課題解決と持続的な成長を支援します。
+				<p style="font-size:15px;color:var(--color-text-light);line-height:2.2;">
+					株式会社レイノアは、補助金申請支援に特化したプロフェッショナル集団です。設備投資・新規事業・業務省力化を目指す企業が、補助金という公的資本を最大限に活用して事業を加速できるよう、採択可能性診断から実績報告まで一気通貫でサポートします。
 				</p>
 			</div>
 		</div>
 	</section>
 
-	<!-- Values Section -->
-	<section class="section section--light">
+	<!-- Representative Profile -->
+	<section class="section section--light" aria-labelledby="ceo-heading">
 		<div class="container">
 			<div class="section-header fade-in">
-				<span class="section-header__en">Our Values</span>
-				<h2 class="section-header__title">大切にしていること</h2>
+				<span class="section-header__en">Representative</span>
+				<h2 id="ceo-heading" class="section-header__title">代表者プロフィール</h2>
 			</div>
-			<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
-				<?php
-				$values = array(
-					array(
-						'en'    => 'Innovation',
-						'ja'    => '革新',
-						'text'  => '変化を恐れず、常に新しいアイデアと技術で課題に挑みます。革新的な思考が、次の時代を切り拓く力になると信じています。',
-					),
-					array(
-						'en'    => 'Integrity',
-						'ja'    => '誠実',
-						'text'  => '言葉と行動の一致を大切にし、すべてのステークホルダーに誠実であり続けます。信頼は、長期的な関係の基盤です。',
-					),
-					array(
-						'en'    => 'Partnership',
-						'ja'    => '共創',
-						'text'  => 'お客様と対等なパートナーとして、共に考え、共に成長します。一方的な提供ではなく、相互理解から生まれる価値を大切にします。',
-					),
-					array(
-						'en'    => 'Excellence',
-						'ja'    => '卓越',
-						'text'  => '妥協のない品質とプロフェッショナリズムで、期待を超える成果を届けます。常に最高水準を目指す姿勢が私たちの誇りです。',
-					),
-					array(
-						'en'    => 'Diversity',
-						'ja'    => '多様性',
-						'text'  => '異なる背景・経験・視点を持つ人材が集い、互いを尊重することで、より豊かな発想と強固な組織が生まれると考えます。',
-					),
-					array(
-						'en'    => 'Sustainability',
-						'ja'    => '持続可能性',
-						'text'  => '短期的な利益だけでなく、社会・環境への責任を果たしながら、長期的に価値を生み出し続ける企業であり続けます。',
-					),
-				);
-				foreach ( $values as $value ) : ?>
-					<div class="fade-in" style="background:#fff;padding:40px 32px;border-bottom:3px solid var(--color-accent);">
-						<p style="font-family:var(--font-en);font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;"><?php echo esc_html( $value['en'] ); ?></p>
-						<h3 style="font-size:22px;font-family:var(--font-heading);color:var(--color-primary);margin-bottom:16px;"><?php echo esc_html( $value['ja'] ); ?></h3>
-						<p style="font-size:14px;color:var(--color-text-light);line-height:2;margin:0;"><?php echo esc_html( $value['text'] ); ?></p>
+
+			<div style="display:grid;grid-template-columns:280px 1fr;gap:60px;align-items:start;max-width:900px;margin:0 auto;">
+				<div class="fade-in" style="text-align:center;">
+					<div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#1a2f5a 0%,#2a4a8a 100%);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+						<span style="font-family:var(--font-en);font-size:80px;color:rgba(200,169,110,0.3);font-weight:700;">T</span>
 					</div>
-				<?php endforeach; ?>
+					<p style="font-size:20px;font-family:var(--font-heading);color:var(--color-primary);font-weight:500;margin-bottom:4px;">高尾 郷介</p>
+					<p style="font-size:12px;letter-spacing:0.1em;color:var(--color-text-muted);">代表取締役</p>
+				</div>
+				<div class="fade-in">
+					<h3 style="font-size:18px;font-family:var(--font-heading);color:var(--color-primary);margin-bottom:20px;font-weight:500;">代表取締役　高尾 郷介</h3>
+					<div style="font-size:14px;color:var(--color-text-light);line-height:2.2;margin-bottom:32px;">
+						<p>
+							京都大学大学院バイオテクノロジー専攻修了後、ダウ・ケミカル日本に入社。製造業・素材業界での事業開発を経験した後、株式会社インダストリアにて中小企業向けの補助金活用支援に従事。
+						</p>
+						<p>
+							その後、株式会社ライトアップにて補助金支援事業の立上げと全国展開を牽引し、多数の中小企業・スタートアップの採択を実現。2024年、補助金申請支援に特化した株式会社レイノアを設立。
+						</p>
+						<p>
+							「科学的思考×ビジネス戦略×補助金専門知識」を組み合わせた独自のアプローチで、単なる書類作成代行を超えた戦略的な申請支援を提供する。
+						</p>
+					</div>
+					<div style="display:flex;flex-direction:column;gap:8px;">
+						<?php
+						$career = array(
+							'京都大学大学院 バイオテクノロジー専攻 修了',
+							'ダウ・ケミカル日本 入社',
+							'株式会社インダストリア 補助金支援部門',
+							'株式会社ライトアップ 補助金支援体制の立上げ・事業拡大を牽引',
+							'2024年 株式会社レイノア 設立・代表取締役就任',
+						);
+						foreach ( $career as $item ) : ?>
+							<div style="display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--color-text-light);">
+								<span style="width:6px;height:6px;border-radius:50%;background:var(--color-accent);margin-top:7px;flex-shrink:0;"></span>
+								<?php echo esc_html( $item ); ?>
+							</div>
+						<?php endforeach; ?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Company Overview Section -->
+	<!-- Company Overview -->
 	<section class="company section" aria-labelledby="company-heading">
 		<div class="container">
 			<div class="section-header fade-in">
@@ -94,132 +92,74 @@ get_header();
 			<table class="company__table">
 				<tbody>
 					<tr>
-						<th scope="row"><?php _e( '会社名', 'reinoa' ); ?></th>
+						<th scope="row">会社名</th>
 						<td><?php echo esc_html( reinoa_company( 'company_name' ) ); ?>（<?php echo esc_html( reinoa_company( 'company_name_en' ) ); ?>）</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php _e( '設立', 'reinoa' ); ?></th>
-						<td>2010年4月1日</td>
+						<th scope="row">設立</th>
+						<td>2024年</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php _e( '資本金', 'reinoa' ); ?></th>
-						<td>5,000万円</td>
+						<th scope="row">代表取締役</th>
+						<td>高尾 郷介</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php _e( '代表取締役', 'reinoa' ); ?></th>
-						<td>山田 太郎</td>
+						<th scope="row">事業内容</th>
+						<td>補助金申請支援サービス（設備投資・新規事業・業務省力化のワンストップサポート）</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php _e( '従業員数', 'reinoa' ); ?></th>
-						<td>200名（2026年1月現在）</td>
-					</tr>
-					<tr>
-						<th scope="row"><?php _e( '所在地', 'reinoa' ); ?></th>
+						<th scope="row">対応補助金</th>
 						<td>
-							<?php echo esc_html( reinoa_company( 'company_zip' ) ); ?><br>
-							<?php echo esc_html( reinoa_company( 'company_address' ) ); ?>
+							中小企業新事業進出補助金 / ものづくり補助金 / 省力化投資補助金<br>
+							中小企業成長加速化補助金 / 事業承継・M&A補助金 / 海外展開関連（IPO360等）
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php _e( '電話番号', 'reinoa' ); ?></th>
-						<td><?php echo esc_html( reinoa_company( 'company_tel' ) ); ?></td>
-					</tr>
-					<tr>
-						<th scope="row"><?php _e( 'FAX番号', 'reinoa' ); ?></th>
-						<td><?php echo esc_html( reinoa_company( 'company_fax' ) ); ?></td>
-					</tr>
-					<tr>
-						<th scope="row"><?php _e( '営業時間', 'reinoa' ); ?></th>
-						<td><?php echo esc_html( reinoa_company( 'company_hours' ) ); ?></td>
-					</tr>
-					<tr>
-						<th scope="row"><?php _e( '事業内容', 'reinoa' ); ?></th>
+						<th scope="row">メールアドレス</th>
 						<td>
-							ITコンサルティング事業<br>
-							システム開発・運用事業<br>
-							デジタルマーケティング事業<br>
-							クラウドソリューション事業<br>
-							人材育成・研修事業
+							<a href="mailto:<?php echo esc_attr( reinoa_company( 'company_email' ) ); ?>" style="color:var(--color-primary);">
+								<?php echo esc_html( reinoa_company( 'company_email' ) ); ?>
+							</a>
 						</td>
-					</tr>
-					<tr>
-						<th scope="row"><?php _e( '取引銀行', 'reinoa' ); ?></th>
-						<td>みずほ銀行 丸の内支店、三菱UFJ銀行 大手町支店</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</section>
 
-	<!-- History Section -->
-	<section class="section section--light" aria-labelledby="history-heading">
+	<!-- Values -->
+	<section class="section section--light" aria-labelledby="values-heading">
 		<div class="container">
 			<div class="section-header fade-in">
-				<span class="section-header__en">History</span>
-				<h2 id="history-heading" class="section-header__title">沿革</h2>
+				<span class="section-header__en">Our Strengths</span>
+				<h2 id="values-heading" class="section-header__title">レイノアが選ばれる理由</h2>
 			</div>
-
-			<div style="max-width:720px;margin:0 auto;">
+			<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
 				<?php
-				$history = array(
-					array( 'year' => '2010', 'month' => '4月', 'text' => '東京都千代田区にて株式会社レイノア設立。ITコンサルティング事業を開始。' ),
-					array( 'year' => '2012', 'month' => '6月', 'text' => 'システム開発部門を設立。エンタープライズ向けシステム開発事業を開始。' ),
-					array( 'year' => '2014', 'month' => '3月', 'text' => '資本金を5,000万円に増資。従業員数50名に達する。' ),
-					array( 'year' => '2016', 'month' => '9月', 'text' => 'クラウドソリューション事業部を新設。AWS・Azureパートナー認定を取得。' ),
-					array( 'year' => '2018', 'month' => '1月', 'text' => 'デジタルマーケティング事業を開始。デジタル変革支援サービスを拡充。' ),
-					array( 'year' => '2020', 'month' => '4月', 'text' => '設立10周年。従業員数150名、売上高20億円を達成。' ),
-					array( 'year' => '2022', 'month' => '7月', 'text' => '大阪オフィスを開設。関西エリアへのサービス提供を強化。' ),
-					array( 'year' => '2024', 'month' => '4月', 'text' => 'AI・データサイエンス事業部を新設。DX推進支援サービスをさらに拡充。' ),
-					array( 'year' => '2026', 'month' => '1月', 'text' => '従業員数200名。グローバル展開に向けた準備を開始。' ),
+				$strengths = array(
+					array(
+						'en'   => 'Expert Knowledge',
+						'ja'   => '深い専門性',
+						'text' => '理系大学院出身×製造業経験×補助金専門キャリアを持つ代表が直接支援。科学的根拠に基づく事業計画で審査員を納得させます。',
+					),
+					array(
+						'en'   => 'End-to-End Support',
+						'ja'   => '一気通貫サポート',
+						'text' => '採択可能性診断・制度選定から事業計画作成・電子申請・実績報告まで、全ステップを一社で完結。複数社に依頼する手間がありません。',
+					),
+					array(
+						'en'   => 'Performance Fee',
+						'ja'   => '成果報酬型',
+						'text' => '採択されなければ成功報酬は発生しません。申請サポート費用110,000円（税込）のみで着手でき、初期リスクを最小化できます。',
+					),
 				);
-				foreach ( $history as $item ) : ?>
-					<div class="fade-in" style="display:grid;grid-template-columns:80px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--color-border);align-items:start;">
-						<div style="text-align:center;">
-							<p style="font-family:var(--font-en);font-size:18px;font-weight:600;color:var(--color-primary);line-height:1;"><?php echo esc_html( $item['year'] ); ?></p>
-							<p style="font-size:12px;color:var(--color-accent);margin:2px 0 0;"><?php echo esc_html( $item['month'] ); ?></p>
-						</div>
-						<p style="font-size:14px;color:var(--color-text-light);line-height:1.8;margin:0;padding-top:4px;"><?php echo esc_html( $item['text'] ); ?></p>
+				foreach ( $strengths as $s ) : ?>
+					<div class="fade-in" style="background:#fff;padding:40px 32px;border-bottom:3px solid var(--color-accent);">
+						<p style="font-family:var(--font-en);font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;"><?php echo esc_html( $s['en'] ); ?></p>
+						<h3 style="font-size:22px;font-family:var(--font-heading);color:var(--color-primary);margin-bottom:16px;"><?php echo esc_html( $s['ja'] ); ?></h3>
+						<p style="font-size:14px;color:var(--color-text-light);line-height:2;margin:0;"><?php echo esc_html( $s['text'] ); ?></p>
 					</div>
 				<?php endforeach; ?>
-			</div>
-		</div>
-	</section>
-
-	<!-- Access Map Section -->
-	<section class="section" aria-labelledby="access-heading">
-		<div class="container">
-			<div class="section-header fade-in">
-				<span class="section-header__en">Access</span>
-				<h2 id="access-heading" class="section-header__title">アクセス</h2>
-			</div>
-
-			<div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
-				<div class="fade-in">
-					<h3 style="font-size:18px;font-family:var(--font-heading);color:var(--color-primary);margin-bottom:20px;">本社</h3>
-					<address style="font-style:normal;font-size:14px;color:var(--color-text-light);line-height:2.2;">
-						<strong style="display:block;color:var(--color-text);margin-bottom:8px;"><?php echo esc_html( reinoa_company( 'company_name' ) ); ?></strong>
-						<?php echo esc_html( reinoa_company( 'company_zip' ) ); ?><br>
-						<?php echo esc_html( reinoa_company( 'company_address' ) ); ?><br>
-						TEL: <?php echo esc_html( reinoa_company( 'company_tel' ) ); ?><br>
-						FAX: <?php echo esc_html( reinoa_company( 'company_fax' ) ); ?>
-					</address>
-					<div style="margin-top:24px;padding:20px;background:var(--color-bg-light);border-left:3px solid var(--color-accent);">
-						<p style="font-size:13px;color:var(--color-text-light);line-height:2;margin:0;">
-							<strong style="color:var(--color-primary);display:block;margin-bottom:4px;">アクセス方法</strong>
-							東京メトロ丸ノ内線「東京駅」より徒歩3分<br>
-							JR各線「東京駅」丸の内北口より徒歩5分
-						</p>
-					</div>
-				</div>
-				<div class="fade-in">
-					<!-- Google Maps Embed placeholder -->
-					<div style="width:100%;aspect-ratio:4/3;background:var(--color-bg-light);display:flex;align-items:center;justify-content:center;border:1px solid var(--color-border);">
-						<p style="color:var(--color-text-muted);font-size:14px;text-align:center;">
-							Google マップを<br>ここに埋め込んでください<br>
-							<a href="https://maps.google.com/" target="_blank" rel="noopener" style="color:var(--color-primary);font-size:12px;margin-top:8px;display:inline-block;">地図を開く →</a>
-						</p>
-					</div>
-				</div>
 			</div>
 		</div>
 	</section>

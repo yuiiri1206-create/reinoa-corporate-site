@@ -16,15 +16,15 @@
 							<span class="footer-logo__name">REINOA</span>
 						</a>
 
-						<address class="footer-address" style="font-style:normal;">
-							<?php echo esc_html( reinoa_company( 'company_zip' ) ); ?><br>
-							<?php echo esc_html( reinoa_company( 'company_address' ) ); ?>
-						</address>
+						<p class="footer-address" style="font-size:13px;color:rgba(255,255,255,0.55);line-height:2;margin-bottom:16px;">
+							補助金申請支援サービス<br>
+							設備投資・新規事業・業務省力化を<br>
+							ワンストップでサポートします。
+						</p>
 
-						<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9]/', '', reinoa_company( 'company_tel' ) ) ); ?>" class="footer-tel">
-							<?php echo esc_html( reinoa_company( 'company_tel' ) ); ?>
+						<a href="mailto:<?php echo esc_attr( reinoa_company( 'company_email' ) ); ?>" class="footer-tel" style="font-size:14px;word-break:break-all;">
+							<?php echo esc_html( reinoa_company( 'company_email' ) ); ?>
 						</a>
-						<p class="footer-hours"><?php echo esc_html( reinoa_company( 'company_hours' ) ); ?></p>
 
 						<!-- SNS Links -->
 						<?php
@@ -58,7 +58,7 @@
 					<!-- Navigation Columns -->
 					<div class="footer-nav">
 						<div class="footer-nav__col">
-							<h3 class="footer-nav__heading"><?php _e( '会社情報', 'reinoa' ); ?></h3>
+							<h3 class="footer-nav__heading"><?php _e( 'サービス', 'reinoa' ); ?></h3>
 							<?php
 							wp_nav_menu( array(
 								'theme_location' => 'footer',
@@ -70,7 +70,7 @@
 							?>
 						</div>
 						<div class="footer-nav__col">
-							<h3 class="footer-nav__heading"><?php _e( 'サービス', 'reinoa' ); ?></h3>
+							<h3 class="footer-nav__heading"><?php _e( '会社情報', 'reinoa' ); ?></h3>
 							<?php
 							wp_nav_menu( array(
 								'theme_location' => 'footer-2',
@@ -82,7 +82,7 @@
 							?>
 						</div>
 						<div class="footer-nav__col">
-							<h3 class="footer-nav__heading"><?php _e( 'その他', 'reinoa' ); ?></h3>
+							<h3 class="footer-nav__heading"><?php _e( 'ポリシー', 'reinoa' ); ?></h3>
 							<?php
 							wp_nav_menu( array(
 								'theme_location' => 'footer-3',
@@ -126,10 +126,10 @@
 <?php
 function reinoa_footer_nav_1_fallback() {
 	$items = array(
-		'about'   => '会社概要',
-		'message' => '代表メッセージ',
-		'history' => '沿革',
-		'team'    => 'メンバー紹介',
+		'service' => 'サービス',
+		'subsidy' => '補助金メニュー',
+		'results' => '支援実績',
+		'pricing' => '料金',
 	);
 	echo '<ul class="footer-nav__list">';
 	foreach ( $items as $slug => $label ) {
@@ -140,10 +140,8 @@ function reinoa_footer_nav_1_fallback() {
 
 function reinoa_footer_nav_2_fallback() {
 	$items = array(
-		'service'             => 'サービス一覧',
-		'service/consulting'  => 'コンサルティング',
-		'service/development' => 'システム開発',
-		'service/support'     => 'サポート',
+		'about'   => '会社概要',
+		'contact' => 'お問い合わせ',
 	);
 	echo '<ul class="footer-nav__list">';
 	foreach ( $items as $slug => $label ) {
@@ -154,10 +152,7 @@ function reinoa_footer_nav_2_fallback() {
 
 function reinoa_footer_nav_3_fallback() {
 	$items = array(
-		'news'           => 'ニュース',
-		'contact'        => 'お問い合わせ',
 		'privacy-policy' => 'プライバシーポリシー',
-		'sitemap'        => 'サイトマップ',
 	);
 	echo '<ul class="footer-nav__list">';
 	foreach ( $items as $slug => $label ) {
