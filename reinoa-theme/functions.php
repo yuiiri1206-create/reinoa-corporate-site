@@ -285,13 +285,10 @@ function reinoa_customize_register( $wp_customize ) {
 
 	$company_fields = array(
 		'company_name'    => array( 'label' => '会社名', 'default' => '株式会社レイノア' ),
-		'company_name_en' => array( 'label' => '会社名（英語）', 'default' => 'Reinoa Inc.' ),
-		'company_zip'     => array( 'label' => '郵便番号', 'default' => '〒100-0001' ),
-		'company_address' => array( 'label' => '住所', 'default' => '東京都千代田区丸の内1-1-1' ),
-		'company_tel'     => array( 'label' => '電話番号', 'default' => '03-0000-0000' ),
-		'company_fax'     => array( 'label' => 'FAX番号', 'default' => '03-0000-0001' ),
-		'company_hours'   => array( 'label' => '営業時間', 'default' => '月〜金 9:00〜18:00（土日祝休）' ),
-		'company_email'   => array( 'label' => 'メールアドレス', 'default' => 'info@reinoa.co.jp' ),
+		'company_name_en' => array( 'label' => '会社名（英語）', 'default' => 'Raynoa Co., Ltd.' ),
+		'company_zip'     => array( 'label' => '郵便番号', 'default' => '' ),
+		'company_address' => array( 'label' => '住所', 'default' => '' ),
+		'company_email'   => array( 'label' => 'メールアドレス', 'default' => 'hojokin_support@raynoa.com' ),
 	);
 
 	foreach ( $company_fields as $key => $args ) {
@@ -313,7 +310,7 @@ function reinoa_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'hero_title_line1', array(
-		'default'           => '未来を創る、',
+		'default'           => '補助金で',
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'hero_title_line1', array(
@@ -323,7 +320,7 @@ function reinoa_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'hero_title_line2', array(
-		'default'           => 'ともに歩む。',
+		'default'           => '「攻めの投資」を加速',
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'hero_title_line2', array(
@@ -333,7 +330,7 @@ function reinoa_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'hero_lead', array(
-		'default'           => '株式会社レイノアは、革新的なソリューションと真摯なパートナーシップで、お客様のビジネスの成長と発展に貢献します。',
+		'default'           => '設備投資・新規事業・業務省力化をワンストップサポート。採択可能性診断から実績報告まで、補助金申請を一気通貫で伴走します。',
 		'sanitize_callback' => 'sanitize_textarea_field',
 	) );
 	$wp_customize->add_control( 'hero_lead', array(
@@ -390,13 +387,10 @@ function reinoa_get_option( $key, $default = '' ) {
 function reinoa_company( $key ) {
 	$defaults = array(
 		'company_name'    => '株式会社レイノア',
-		'company_name_en' => 'Reinoa Inc.',
-		'company_zip'     => '〒100-0001',
-		'company_address' => '東京都千代田区丸の内1-1-1',
-		'company_tel'     => '03-0000-0000',
-		'company_fax'     => '03-0000-0001',
-		'company_hours'   => '月〜金 9:00〜18:00（土日祝休）',
-		'company_email'   => 'info@reinoa.co.jp',
+		'company_name_en' => 'Raynoa Co., Ltd.',
+		'company_zip'     => '',
+		'company_address' => '',
+		'company_email'   => 'hojokin_support@raynoa.com',
 	);
 	return get_theme_mod( $key, $defaults[ $key ] ?? '' );
 }

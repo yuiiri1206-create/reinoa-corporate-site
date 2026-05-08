@@ -43,14 +43,8 @@
 
 			<!-- Header CTA -->
 			<div class="header-cta">
-				<div class="header-tel">
-					<span class="header-tel__label">お問い合わせ電話番号</span>
-					<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9]/', '', reinoa_company( 'company_tel' ) ) ); ?>" class="header-tel__number">
-						<?php echo esc_html( reinoa_company( 'company_tel' ) ); ?>
-					</a>
-				</div>
 				<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--accent">
-					<?php _e( 'お問い合わせ', 'reinoa' ); ?>
+					<?php _e( '無料相談はこちら', 'reinoa' ); ?>
 				</a>
 			</div>
 
@@ -80,11 +74,8 @@
 			?>
 		</nav>
 		<div class="mobile-menu__cta">
-			<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9]/', '', reinoa_company( 'company_tel' ) ) ); ?>" style="display:block;color:#fff;font-size:22px;font-family:var(--font-en);margin-bottom:16px;">
-				<?php echo esc_html( reinoa_company( 'company_tel' ) ); ?>
-			</a>
 			<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--accent" style="width:100%;justify-content:center;">
-				<?php _e( 'お問い合わせ', 'reinoa' ); ?>
+				<?php _e( '無料相談はこちら', 'reinoa' ); ?>
 			</a>
 		</div>
 	</div><!-- #mobile-menu -->
@@ -94,10 +85,12 @@
 
 function reinoa_default_nav() {
 	$pages = array(
-		'about'   => '会社概要',
 		'service' => 'サービス',
-		'news'    => 'ニュース',
-		'contact' => 'お問い合わせ',
+		'subsidy'  => '補助金メニュー',
+		'results'  => '支援実績',
+		'pricing'  => '料金',
+		'about'    => '会社概要',
+		'contact'  => 'お問い合わせ',
 	);
 	echo '<ul class="site-nav__list" role="list">';
 	foreach ( $pages as $slug => $label ) {
@@ -115,11 +108,13 @@ function reinoa_default_nav() {
 
 function reinoa_mobile_default_nav() {
 	$pages = array(
-		'/'       => 'ホーム',
-		'about'   => '会社概要',
-		'service' => 'サービス',
-		'news'    => 'ニュース',
-		'contact' => 'お問い合わせ',
+		'/'        => 'ホーム',
+		'service'  => 'サービス',
+		'subsidy'  => '補助金メニュー',
+		'results'  => '支援実績',
+		'pricing'  => '料金',
+		'about'    => '会社概要',
+		'contact'  => 'お問い合わせ',
 	);
 	echo '<ul class="mobile-menu__list" role="list">';
 	foreach ( $pages as $slug => $label ) {
