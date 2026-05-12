@@ -53,7 +53,7 @@
 	<!-- ============================================
 	     Services Section
 	     ============================================ -->
-	<section id="service" class="services section" aria-labelledby="services-heading">
+	<section id="services" class="services section" aria-labelledby="services-heading">
 		<div class="container">
 			<div class="section-header fade-in">
 				<span class="section-header__en">Our Services</span>
@@ -114,7 +114,7 @@
 	<!-- ============================================
 	     Subsidy Menu Section
 	     ============================================ -->
-	<section id="subsidy" class="section section--light" aria-labelledby="subsidy-heading">
+	<section id="subsidy-menu" class="section section--light" aria-labelledby="subsidy-heading">
 		<div class="container">
 			<div class="section-header fade-in">
 				<span class="section-header__en">Subsidy Menu</span>
@@ -299,7 +299,7 @@
 	<!-- ============================================
 	     About Section
 	     ============================================ -->
-	<section class="about section section--light" aria-labelledby="about-heading">
+	<section id="about" class="about section section--light" aria-labelledby="about-heading">
 		<div class="container">
 			<div class="about__inner">
 				<div class="about__image fade-in">
@@ -427,7 +427,7 @@
 	<!-- ============================================
 	     Contact CTA Section
 	     ============================================ -->
-	<section class="contact-banner" aria-labelledby="contact-cta-heading">
+	<section id="contact" class="contact-banner" aria-labelledby="contact-cta-heading">
 		<div class="contact-banner__deco" aria-hidden="true"></div>
 		<div class="contact-banner__deco" aria-hidden="true"></div>
 		<div class="container" style="position:relative;z-index:1;">

@@ -109,6 +109,24 @@
   });
 
   /* ============================================
+     Hash Jump on Page Load (/?#section からの遷移)
+     ============================================ */
+  (function () {
+    const hash = window.location.hash;
+    if (!hash) return;
+    // DOMContentLoaded 後すぐではなく、レイアウトが落ち着いてからスクロール
+    window.addEventListener('load', function () {
+      const target = document.querySelector(hash);
+      if (!target) return;
+      const headerHeight = header ? header.offsetHeight : 0;
+      setTimeout(function () {
+        const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+      }, 100);
+    });
+  }());
+
+  /* ============================================
      Contact Form: Basic Client-side Validation
      ============================================ */
   const contactForm = document.querySelector('.reinoa-contact-form');
