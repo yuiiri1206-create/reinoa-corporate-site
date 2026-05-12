@@ -149,6 +149,7 @@ p:last-child {
   font-size: clamp(28px, 4vw, 42px);
   font-weight: 500;
   letter-spacing: 0.05em;
+  color: var(--color-primary);
 }
 
 .section-header__lead {
@@ -159,6 +160,21 @@ p:last-child {
   margin-left: auto;
   margin-right: auto;
   line-height: 2;
+}
+
+/* Light/white sections: explicit dark text to prevent color blending with fixed header */
+.section .section-header__en {
+  color: var(--color-accent);
+}
+
+.section .section-header__title,
+.section--light .section-header__title {
+  color: var(--color-primary);
+}
+
+.section .section-header__lead,
+.section--light .section-header__lead {
+  color: var(--color-text-light);
 }
 
 .section--dark .section-header__title {
@@ -827,6 +843,7 @@ p:last-child {
   font-weight: 500;
   margin-bottom: 16px;
   letter-spacing: 0.05em;
+  color: var(--color-primary);
 }
 
 .service-card__text {
@@ -1526,6 +1543,25 @@ p:last-child {
 .fade-in.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ============================================
+   Scroll Margin: Fixed Header Offset
+   アンカージャンプ時に固定ヘッダーでタイトルが隠れないよう余白を確保
+   ============================================ */
+section[id] {
+  scroll-margin-top: calc(var(--header-height) + 24px);
+}
+
+/* ============================================
+   Anchor Target: Fade-in Override
+   :target セクションの .fade-in を即座に表示（opacity:0 のまま残らないよう）
+   ============================================ */
+:target .fade-in,
+:target.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: none;
 }
 
 /* ============================================

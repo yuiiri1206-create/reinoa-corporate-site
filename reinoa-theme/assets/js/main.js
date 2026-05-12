@@ -93,17 +93,29 @@
   }
 
   /* ============================================
-     Smooth Scroll for Anchor Links
+     Smooth Scroll + Fade-in reveal for Anchor Links
      ============================================ */
+  function revealFadeIn(section) {
+    if (!section) return;
+    section.querySelectorAll('.fade-in').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href').slice(1);
       if (!targetId) return;
       const target = document.getElementById(targetId);
       if (!target) return;
+
+      // フェードイン要素を即座に表示
+      revealFadeIn(target);
+
+      // ヘッダー高さを考慮してスムーズスクロール
       e.preventDefault();
       const headerHeight = header ? header.offsetHeight : 0;
-      const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
       window.scrollTo({ top: targetTop, behavior: 'smooth' });
     });
   });
@@ -114,15 +126,20 @@
   (function () {
     const hash = window.location.hash;
     if (!hash) return;
-    // DOMContentLoaded 後すぐではなく、レイアウトが落ち着いてからスクロール
+
     window.addEventListener('load', function () {
       const target = document.querySelector(hash);
       if (!target) return;
+
+      // 対象セクション内の .fade-in を即座に表示
+      revealFadeIn(target);
+
+      // ヘッダー高さを考慮してスクロール（レイアウト確定後に実行）
       const headerHeight = header ? header.offsetHeight : 0;
       setTimeout(function () {
-        const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+        const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
         window.scrollTo({ top: targetTop, behavior: 'smooth' });
-      }, 100);
+      }, 80);
     });
   }());
 
