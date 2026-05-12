@@ -461,6 +461,32 @@ p:last-child {
   background-color: #fff;
 }
 
+/* Header: light-section override (white bg, dark text) */
+.site-header.header--light {
+  background-color: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 1px 20px rgba(26, 47, 90, 0.1);
+}
+
+.site-header.header--light .site-logo__name {
+  color: var(--color-primary);
+}
+
+.site-header.header--light .site-logo__sub {
+  color: var(--color-text-muted);
+}
+
+.site-header.header--light .site-nav__item > a {
+  color: var(--color-text);
+}
+
+.site-header.header--light .site-nav__item > a:hover {
+  color: var(--color-primary);
+}
+
+.site-header.header--light .hamburger__line {
+  background-color: var(--color-primary);
+}
+
 /* Mobile menu */
 .mobile-menu {
   display: none;
