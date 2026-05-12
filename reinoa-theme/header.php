@@ -83,23 +83,31 @@
 	<div id="content" class="site-content">
 <?php
 
+/**
+ * トップページ内セクションへのアンカー URL を返す。
+ * フロントページ上では #hash のみ、それ以外は /?#hash 形式にする。
+ */
+function reinoa_anchor_url( $hash ) {
+	if ( is_front_page() ) {
+		return '#' . $hash;
+	}
+	return home_url( '/#' . $hash );
+}
+
 function reinoa_default_nav() {
-	$pages = array(
-		'service' => 'サービス',
-		'subsidy'  => '補助金メニュー',
-		'results'  => '支援実績',
-		'pricing'  => '料金',
-		'about'    => '会社概要',
-		'contact'  => 'お問い合わせ',
+	$items = array(
+		'services'    => 'サービス',
+		'subsidy-menu' => '補助金メニュー',
+		'results'     => '支援実績',
+		'pricing'     => '料金',
+		'about'       => '会社概要',
+		'contact'     => 'お問い合わせ',
 	);
 	echo '<ul class="site-nav__list" role="list">';
-	foreach ( $pages as $slug => $label ) {
-		$url     = home_url( '/' . $slug );
-		$current = trailingslashit( get_permalink() ) === trailingslashit( $url ) ? ' current-menu-item' : '';
+	foreach ( $items as $hash => $label ) {
 		printf(
-			'<li class="site-nav__item%s"><a href="%s">%s</a></li>',
-			esc_attr( $current ),
-			esc_url( $url ),
+			'<li class="site-nav__item"><a href="%s">%s</a></li>',
+			esc_url( reinoa_anchor_url( $hash ) ),
 			esc_html( $label )
 		);
 	}
@@ -107,21 +115,24 @@ function reinoa_default_nav() {
 }
 
 function reinoa_mobile_default_nav() {
-	$pages = array(
-		'/'        => 'ホーム',
-		'service'  => 'サービス',
-		'subsidy'  => '補助金メニュー',
-		'results'  => '支援実績',
-		'pricing'  => '料金',
-		'about'    => '会社概要',
-		'contact'  => 'お問い合わせ',
+	$items = array(
+		'services'     => 'サービス',
+		'subsidy-menu' => '補助金メニュー',
+		'results'      => '支援実績',
+		'pricing'      => '料金',
+		'about'        => '会社概要',
+		'contact'      => 'お問い合わせ',
 	);
 	echo '<ul class="mobile-menu__list" role="list">';
-	foreach ( $pages as $slug => $label ) {
-		$url = $slug === '/' ? home_url( '/' ) : home_url( '/' . $slug );
+	// ホームへ戻るリンクを先頭に追加
+	printf(
+		'<li class="mobile-menu__item"><a href="%s">ホーム</a></li>',
+		esc_url( home_url( '/' ) )
+	);
+	foreach ( $items as $hash => $label ) {
 		printf(
 			'<li class="mobile-menu__item"><a href="%s">%s</a></li>',
-			esc_url( $url ),
+			esc_url( reinoa_anchor_url( $hash ) ),
 			esc_html( $label )
 		);
 	}
