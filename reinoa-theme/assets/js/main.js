@@ -31,7 +31,9 @@
     function isDarkSection(section) {
       return section.classList.contains('section--dark') ||
              section.classList.contains('hero') ||
-             section.classList.contains('contact-banner');
+             section.classList.contains('contact-banner') ||
+             section.id === 'contact' ||
+             section.id === 'results';
     }
 
     function updateHeaderColor() {
