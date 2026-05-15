@@ -25,7 +25,7 @@
   /* ============================================
      Header Color: Section-based switching
      ============================================ */
-  if (header && 'IntersectionObserver' in window) {
+  if (header) {
     var colorSections = Array.from(document.querySelectorAll('.hero, section[id]'));
 
     function isDarkSection(section) {
@@ -34,20 +34,23 @@
              section.classList.contains('contact-banner');
     }
 
-    var headerH = header.offsetHeight;
-    var bottomMargin = Math.max(0, window.innerHeight - headerH - 2);
+    function updateHeaderColor() {
+      var sensorY = window.scrollY + header.offsetHeight + 1;
+      var active = null;
 
-    var sectionColorObserver = new IntersectionObserver(function (entries) {
-      var entering = entries.filter(function (e) { return e.isIntersecting; });
-      if (entering.length === 0) return;
-      var section = entering[entering.length - 1].target;
-      header.classList.toggle('header--light', !isDarkSection(section));
-    }, {
-      rootMargin: '-' + headerH + 'px 0px -' + bottomMargin + 'px 0px',
-      threshold: 0,
-    });
+      for (var i = colorSections.length - 1; i >= 0; i--) {
+        var top = colorSections[i].getBoundingClientRect().top + window.scrollY;
+        if (sensorY >= top) {
+          active = colorSections[i];
+          break;
+        }
+      }
 
-    colorSections.forEach(function (s) { sectionColorObserver.observe(s); });
+      header.classList.toggle('header--light', active !== null && !isDarkSection(active));
+    }
+
+    window.addEventListener('scroll', updateHeaderColor, { passive: true });
+    updateHeaderColor();
   }
 
   /* ============================================
