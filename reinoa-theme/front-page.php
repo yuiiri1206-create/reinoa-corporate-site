@@ -244,7 +244,7 @@
 				<p class="section-header__lead">成果報酬型を採用。採択されるまで初期費用を最小限に抑えられます。</p>
 			</div>
 
-			<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--color-border);max-width:900px;margin:0 auto;" class="fade-in">
+			<div class="pricing-grid fade-in">
 				<?php
 				$steps = array(
 					array(
