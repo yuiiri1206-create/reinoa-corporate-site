@@ -833,6 +833,16 @@ p:last-child {
   background: var(--color-border);
 }
 
+/* Pricing grid (PC: 3col, mobile: 1col via media query) */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--color-border);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .service-card {
   background-color: #fff;
   padding: 50px 40px;
@@ -1725,6 +1735,17 @@ section[id] {
   }
 
   .subsidy-grid > div {
+    border: 1px solid var(--color-border);
+  }
+
+  /* Pricing grid: single column on mobile */
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    background: transparent;
+  }
+
+  .pricing-grid > div {
     border: 1px solid var(--color-border);
   }
 }
