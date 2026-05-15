@@ -825,6 +825,14 @@ p:last-child {
   background-color: var(--color-border);
 }
 
+/* Subsidy grid (PC: 3col, mobile: 1col via media query) */
+.subsidy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--color-border);
+}
+
 .service-card {
   background-color: #fff;
   padding: 50px 40px;
@@ -1700,6 +1708,24 @@ section[id] {
   .contact-banner__actions {
     flex-direction: column;
     align-items: center;
+  }
+
+  /* Header CTA: compact on mobile */
+  .header-cta .btn {
+    font-size: 12px;
+    padding: 8px 12px;
+    white-space: nowrap;
+  }
+
+  /* Subsidy grid: single column on mobile */
+  .subsidy-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    background: transparent;
+  }
+
+  .subsidy-grid > div {
+    border: 1px solid var(--color-border);
   }
 }
 

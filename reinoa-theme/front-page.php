@@ -122,7 +122,7 @@
 				<p class="section-header__lead">幅広い補助金制度に対応。貴社の目的・規模に合った最適な制度を選定します。</p>
 			</div>
 
-			<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--color-border);" class="fade-in">
+			<div class="subsidy-grid fade-in">
 				<?php
 				$subsidies = array(
 					array(
