@@ -23,39 +23,6 @@
   }
 
   /* ============================================
-     Header Color: Section-based switching
-     ============================================ */
-  if (header) {
-    var colorSections = Array.from(document.querySelectorAll('.hero, section[id]'));
-
-    function isDarkSection(section) {
-      return section.classList.contains('section--dark') ||
-             section.classList.contains('hero') ||
-             section.classList.contains('contact-banner') ||
-             section.id === 'contact' ||
-             section.id === 'results';
-    }
-
-    function updateHeaderColor() {
-      var sensorY = window.scrollY + header.offsetHeight + 1;
-      var active = null;
-
-      for (var i = colorSections.length - 1; i >= 0; i--) {
-        var top = colorSections[i].getBoundingClientRect().top + window.scrollY;
-        if (sensorY >= top) {
-          active = colorSections[i];
-          break;
-        }
-      }
-
-      header.classList.toggle('header--light', active !== null && !isDarkSection(active));
-    }
-
-    window.addEventListener('scroll', updateHeaderColor, { passive: true });
-    updateHeaderColor();
-  }
-
-  /* ============================================
      Mobile Menu
      ============================================ */
   const hamburger     = document.getElementById('hamburger-btn');

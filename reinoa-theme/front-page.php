@@ -188,7 +188,7 @@
 		<div class="container">
 			<div class="section-header fade-in">
 				<span class="section-header__en">Case Studies</span>
-				<h2 id="results-heading" class="section-header__title" style="color:#fff;">支援実績（抜粋）</h2>
+				<h2 id="results-heading" class="section-header__title">支援実績（抜粋）</h2>
 			</div>
 
 			<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
@@ -214,16 +214,16 @@
 					),
 				);
 				foreach ( $cases as $case ) : ?>
-					<div class="fade-in" style="border:1px solid rgba(255,255,255,0.1);padding:36px 28px;background:rgba(255,255,255,0.03);transition:background 0.3s;"
-					     onmouseover="this.style.background='rgba(255,255,255,0.06)';"
-					     onmouseout="this.style.background='rgba(255,255,255,0.03)';">
-						<p style="font-size:11px;letter-spacing:0.15em;color:var(--color-accent);margin-bottom:12px;font-weight:600;text-transform:uppercase;">Adopted</p>
-						<p style="font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:8px;line-height:1.6;"><?php echo esc_html( $case['industry'] ); ?></p>
-						<p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);">
+					<div class="fade-in" style="border:1px solid var(--color-border);padding:36px 28px;background:#fff;border-radius:var(--radius);transition:box-shadow 0.3s;"
+					     onmouseover="this.style.boxShadow='var(--shadow-hover)';"
+					     onmouseout="this.style.boxShadow='';">
+						<p style="font-size:11px;letter-spacing:0.1em;color:var(--color-accent);margin-bottom:12px;font-weight:600;text-transform:uppercase;">Adopted</p>
+						<p style="font-size:14px;color:var(--color-text-light);margin-bottom:8px;line-height:1.6;"><?php echo esc_html( $case['industry'] ); ?></p>
+						<p style="font-size:13px;color:var(--color-text-muted);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--color-border);">
 							<?php echo esc_html( $case['program'] ); ?>
 						</p>
-						<p style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;"><?php echo esc_html( $case['label'] ); ?></p>
-						<p style="font-family:var(--font-en);font-size:28px;font-weight:600;color:var(--color-accent);line-height:1;margin:0;">
+						<p style="font-size:11px;color:var(--color-text-muted);margin-bottom:4px;"><?php echo esc_html( $case['label'] ); ?></p>
+						<p style="font-family:var(--font-en);font-size:28px;font-weight:600;color:var(--color-primary);line-height:1;margin:0;">
 							<?php echo esc_html( $case['amount'] ); ?>
 						</p>
 					</div>
