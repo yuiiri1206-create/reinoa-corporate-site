@@ -363,6 +363,17 @@ function reinoa_customize_register( $wp_customize ) {
 		'section' => 'reinoa_profile',
 	) ) );
 
+	// About section image (front page)
+	$wp_customize->add_setting( 'about_image', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'about_image', array(
+		'label'       => __( '会社紹介セクション 画像', 'reinoa' ),
+		'description' => __( 'トップページ「ABOUT US」左側に表示される画像', 'reinoa' ),
+		'section'     => 'reinoa_profile',
+	) ) );
+
 	// SNS Links
 	$wp_customize->add_section( 'reinoa_sns', array(
 		'title'    => __( 'SNSリンク', 'reinoa' ),
