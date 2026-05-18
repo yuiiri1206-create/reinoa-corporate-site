@@ -622,6 +622,7 @@ p:last-child {
   margin: 0 auto;
   padding: 0 40px;
   width: 100%;
+  text-align: center;
 }
 
 .hero__en-title {
@@ -653,6 +654,8 @@ p:last-child {
   color: var(--color-text-light);
   line-height: 2.2;
   max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 48px;
 }
 
@@ -660,6 +663,7 @@ p:last-child {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .hero__scroll {
@@ -816,6 +820,13 @@ p:last-child {
   grid-template-columns: repeat(3, 1fr);
   gap: 2px;
   background-color: var(--color-border);
+}
+
+/* Results grid (PC: 3col, mobile: 1col via media query) */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
 /* Subsidy grid (PC: 3col, mobile: 1col via media query) */
@@ -1712,6 +1723,22 @@ section[id] {
   .contact-banner__actions {
     flex-direction: column;
     align-items: center;
+  }
+
+  /* Fix 1: Hero title — reduce font size to prevent awkward line breaks */
+  .hero__title {
+    font-size: clamp(26px, 8vw, 32px);
+  }
+
+  /* Fix 2: Results grid — single column, cards contained */
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .results-grid .fade-in {
+    font-size: 22px;
+    word-break: break-all;
   }
 
   /* Header CTA: compact on mobile */

@@ -191,7 +191,7 @@
 				<h2 id="results-heading" class="section-header__title">支援実績（抜粋）</h2>
 			</div>
 
-			<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+		<div class="results-grid">
 				<?php
 				$cases = array(
 					array(
