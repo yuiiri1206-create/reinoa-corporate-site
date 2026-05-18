@@ -24,9 +24,25 @@ get_header();
 
 				<!-- Photo & Name -->
 				<div class="fade-in" style="text-align:center;">
-					<div style="width:100%;aspect-ratio:3/4;background:var(--color-bg-dark);display:flex;align-items:center;justify-content:center;margin-bottom:24px;border-radius:var(--radius);">
-						<span style="font-family:var(--font-en);font-size:96px;color:var(--color-accent);opacity:0.3;font-weight:300;">T</span>
-					</div>
+					<?php
+					// Priority: 1) Customizer setting, 2) Page featured image, 3) Placeholder
+					$profile_photo_url = get_theme_mod( 'profile_photo' );
+					if ( ! $profile_photo_url ) {
+						global $post;
+						if ( has_post_thumbnail( $post->ID ) ) {
+							$profile_photo_url = get_the_post_thumbnail_url( $post->ID, 'reinoa-square' );
+						}
+					}
+					?>
+					<?php if ( $profile_photo_url ) : ?>
+						<img src="<?php echo esc_url( $profile_photo_url ); ?>"
+						     alt="代表取締役 高尾 郷介"
+						     style="width:100%;border-radius:var(--radius);display:block;margin-bottom:24px;object-fit:cover;aspect-ratio:1/1;">
+					<?php else : ?>
+						<div style="width:100%;aspect-ratio:3/4;background:var(--color-bg-dark);display:flex;align-items:center;justify-content:center;margin-bottom:24px;border-radius:var(--radius);">
+							<span style="font-family:var(--font-en);font-size:96px;color:var(--color-accent);opacity:0.3;font-weight:300;">T</span>
+						</div>
+					<?php endif; ?>
 					<p style="font-size:24px;font-family:var(--font-heading);color:var(--color-primary);font-weight:300;margin-bottom:6px;letter-spacing:0.05em;">高尾 郷介</p>
 					<p style="font-size:12px;letter-spacing:0.1em;color:var(--color-text-muted);margin-bottom:20px;">Kosuke Takao</p>
 					<p style="display:inline-block;font-size:11px;letter-spacing:0.1em;color:var(--color-primary);border:1px solid var(--color-border);padding:6px 20px;">代表取締役</p>
