@@ -304,14 +304,12 @@
 			<div class="about__inner">
 				<div class="about__image fade-in">
 					<?php
-					$about_img = get_theme_mod( 'about_image' );
-					if ( $about_img ) :
-						echo wp_get_attachment_image( $about_img, 'reinoa-featured', false, array( 'class' => 'about__image-main', 'alt' => '代表取締役 高尾郷介' ) );
-					else : ?>
-						<div class="about__image-main" style="background:linear-gradient(135deg,#1a2f5a 0%,#2a4a8a 100%);display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;">
-							<span style="font-family:var(--font-en);font-size:80px;color:rgba(200,169,110,0.3);font-weight:700;">R</span>
-						</div>
-					<?php endif; ?>
+					$about_img_url = get_theme_mod( 'about_image', home_url( '/wp-content/uploads/2026/05/34558864_m.jpg' ) );
+					?>
+					<img src="<?php echo esc_url( $about_img_url ); ?>"
+					     alt="代表取締役 高尾郷介"
+					     class="about__image-main"
+					     style="width:100%;height:100%;object-fit:cover;display:block;">
 					<div class="about__image-deco" aria-hidden="true"></div>
 					<div class="about__image-label">
 						<span>設立</span>
