@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>まちのWEB写真室 | 写真を撮れるホームページ屋さん</title>
+  <meta name="description" content="横浜周辺の中小企業・工務店・個人店舗向けに、写真撮影込みのホームページ制作サービスを提供しています。" />
+  <style>
+    /* ============================================================
+       リセット & ベース
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:   #6BBDD4;
+      --blue-l: #E8F6FA;
+      --pink:   #F4A0B0;
+      --pink-l: #FEF0F3;
+      --green:  #7EBF8E;
+      --green-l:#EEF7F0;
+      --sand:   #F7F3EE;
+      --text:   #444;
+      --text-s: #777;
+      --white:  #FFFFFF;
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(0,0,0,.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP',
+                   'Yu Gothic', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ============================================================
+       ユーティリティ
+    ============================================================ */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700;
+      letter-spacing: .05em;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 12px;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 48px; height: 3px;
+      border-radius: 2px;
+      background: var(--blue);
+    }
+
+    .section-title p {
+      margin-top: 12px;
+      color: var(--text-s);
+      font-size: 14px;
+    }
+
+    /* タグ */
+    .tag {
+      display: inline-block;
+      background: var(--blue-l);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
+    }
+
+    /* ============================================================
+       ヘッダー
+    ============================================================ */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #eee;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .logo-wrap img {
+      height: 48px;
+      width: auto;
+    }
+
+    /* ロゴ画像がない場合のフォールバック */
+    .logo-fallback {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .logo-fallback .logo-main {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .logo-fallback .logo-main span { color: var(--pink); }
+    .logo-fallback .logo-sub {
+      font-size: 10px;
+      color: var(--text-s);
+    }
+
+    .header-cta {
+      background: var(--green);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: opacity .2s;
+      white-space: nowrap;
+    }
+    .header-cta:hover { opacity: .85; }
+
+    /* ============================================================
+       ① ファーストビュー
+    ============================================================ */
+    #hero {
+      background: linear-gradient(135deg, var(--blue-l) 0%, var(--white) 55%, var(--pink-l) 100%);
+      padding: 80px 20px 90px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 背景の丸 */
+    #hero::before, #hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: .18;
+    }
+    #hero::before {
+      width: 400px; height: 400px;
+      background: var(--blue);
+      top: -120px; left: -80px;
+    }
+    #hero::after {
+      width: 300px; height: 300px;
+      background: var(--pink);
+      bottom: -80px; right: -60px;
+    }
+
+    .hero-logo {
+      margin: 0 auto 32px;
+      max-width: 280px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp .7s ease both;
+    }
+
+    .hero-logo img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* ロゴ画像がない場合 */
+    .hero-logo-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .hero-logo-text .hl-main {
+      font-size: clamp(28px, 6vw, 42px);
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .hero-logo-text .hl-main span { color: var(--pink); }
+    .hero-logo-text .hl-sub {
+      font-size: clamp(12px, 2.5vw, 16px);
+      color: var(--text-s);
+      border-top: 1px solid #ddd;
+      padding-top: 6px;
+      margin-top: 4px;
+      letter-spacing: .1em;
+    }
+
+    .hero-catch {
+      position: relative;
+      z-index: 1;
+      animation: fadeUp .7s .15s ease both;
+    }
+
+    .hero-catch h1 {
+      font-size: clamp(20px, 4.5vw, 32px);
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: .04em;
+      margin-bottom: 12px;
+    }
+
+    .hero-catch h1 em {
+      font-style: normal;
+      color: var(--blue);
+      border-bottom: 3px solid var(--blue);
+      padding-bottom: 1px;
+    }
+
+    .hero-catch p {
+      color: var(--text-s);
+      font-size: clamp(14px, 2.5vw, 17px);
+      margin-bottom: 36px;
+    }
+
+    .btn-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #06C755;
+      color: #fff;
+      font-size: clamp(15px, 3vw, 18px);
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(6,199,85,.35);
+      transition: transform .2s, box-shadow .2s;
+      position: relative;
+      z-index: 1;
+    }
+    .btn-line:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(6,199,85,.4);
+    }
+
+    .btn-line svg { flex-shrink: 0; }
+
+    .hero-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--text-s);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ============================================================
+       ② サービス紹介
+    ============================================================ */
+    #services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1.5px solid #eee;
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--blue);
+    }
+
+    .service-icon {
+      font-size: 44px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--blue);
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--text-s);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       ③ こんな方へ
+    ============================================================ */
+    #target { background: var(--sand); }
+
+    .target-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .target-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .target-check {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      background: var(--pink-l);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--pink);
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .target-item p {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .target-item span {
+      display: block;
+      font-size: 13px;
+      color: var(--text-s);
+      font-weight: 400;
+      margin-top: 4px;
+    }
+
+    /* ============================================================
+       ④ 料金
+    ============================================================ */
+    #price { background: var(--white); }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .price-card {
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      border: 2px solid #eee;
+      position: relative;
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .price-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .price-card.featured {
+      border-color: var(--blue);
+      background: var(--blue-l);
+    }
+
+    .price-badge {
+      position: absolute;
+      top: 16px; right: -28px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 36px;
+      transform: rotate(45deg);
+      letter-spacing: .06em;
+    }
+
+    .price-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--text-s);
+      margin-bottom: 8px;
+    }
+
+    .price-name {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--blue);
+    }
+
+    .price-amount {
+      font-size: clamp(32px, 6vw, 42px);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin-bottom: 4px;
+    }
+
+    .price-amount small {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .price-note {
+      font-size: 12px;
+      color: var(--text-s);
+      margin-bottom: 24px;
+    }
+
+    .price-list {
+      list-style: none;
+      text-align: left;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .price-list li::before {
+      content: '✓ ';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .price-disclaimer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-s);
+      margin-top: 28px;
+    }
+
+    /* ============================================================
+       ⑤ 制作イメージ
+    ============================================================ */
+    #works { background: var(--green-l); }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .work-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,.1);
+    }
+
+    .work-thumb {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      position: relative;
+    }
+
+    .work-thumb-1 { background: linear-gradient(135deg, #b8e3f0, #d9f0f8); }
+    .work-thumb-2 { background: linear-gradient(135deg, #f5c6d0, #fde8ec); }
+    .work-thumb-3 { background: linear-gradient(135deg, #c4e6cc, #e3f4e8); }
+
+    .work-thumb-label {
+      position: absolute;
+      bottom: 12px; left: 12px;
+      background: rgba(255,255,255,.85);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      color: var(--text);
+      letter-spacing: .05em;
+    }
+
+    .work-body {
+      padding: 20px;
+    }
+
+    .work-body h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .work-body p {
+      font-size: 13px;
+      color: var(--text-s);
+      line-height: 1.7;
+    }
+
+    .work-tags {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .work-tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .work-tag-blue  { background: var(--blue-l);  color: var(--blue);  }
+    .work-tag-pink  { background: var(--pink-l);  color: var(--pink);  }
+    .work-tag-green { background: var(--green-l); color: var(--green); }
+
+    /* ============================================================
+       ⑥ お問い合わせ
+    ============================================================ */
+    #contact {
+      background: linear-gradient(135deg, var(--blue-l) 0%, var(--pink-l) 100%);
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .contact-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-inner h2 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .contact-inner p {
+      color: var(--text-s);
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .contact-line-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .qr-placeholder {
+      width: 140px; height: 140px;
+      border: 2px dashed var(--blue);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: var(--text-s);
+      font-size: 12px;
+      gap: 6px;
+    }
+
+    .qr-placeholder svg { opacity: .4; }
+
+    .qr-label {
+      font-size: 12px;
+      color: var(--text-s);
+    }
+
+    .contact-or {
+      font-size: 13px;
+      color: var(--text-s);
+      align-self: center;
+      padding: 0 8px;
+    }
+
+    .contact-info {
+      text-align: left;
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      font-size: 14px;
+      line-height: 2;
+      box-shadow: var(--shadow);
+      min-width: 220px;
+    }
+
+    .contact-info strong { color: var(--blue); }
+
+    /* ============================================================
+       フッター
+    ============================================================ */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 13px;
+    }
+
+    footer .footer-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    footer .footer-logo span { color: var(--pink); }
+
+    /* ============================================================
+       アニメーション
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       レスポンシブ
+    ============================================================ */
+    @media (max-width: 600px) {
+      .section { padding: 56px 0; }
+      #hero     { padding: 60px 20px 70px; }
+
+      .services-grid,
+      .target-grid,
+      .works-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+      }
+
+      .contact-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-or { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       ヘッダー
+  ========================================================== -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo-wrap" id="header-logo">
+        <!-- logo.png を同じフォルダに置くと自動表示されます -->
+        <img
+          src="logo.png"
+          alt="まちのWEB写真室"
+          onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';"
+        />
+        <div class="logo-fallback" id="logo-fallback" style="display:none;">
+          <span class="logo-main"><span>まちの</span>WEB写真室</span>
+          <span class="logo-sub">写真を撮れるホームページ屋さん</span>
+        </div>
+      </a>
+      <a href="#contact" class="header-cta">無料相談はこちら</a>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       ① ファーストビュー
+  ========================================================== -->
+  <section id="hero">
+    <div class="hero-logo" id="hero-logo">
+      <img
+        src="logo.png"
+        alt="まちのWEB写真室 ロゴ"
+        onerror="
+          this.style.display='none';
+          document.getElementById('hero-logo-text').style.display='flex';
+        "
+      />
+      <div class="hero-logo-text" id="hero-logo-text" style="display:none;">
+        <div class="hl-main"><span>まちの</span>WEB写真室</div>
+        <div class="hl-sub">写真を撮れるホームページ屋さん</div>
+      </div>
+    </div>
+
+    <div class="hero-catch">
+      <h1>
+        地元の小さな会社を、<br />
+        <em>ホームページ</em>で応援します
+      </h1>
+      <p>
+        写真撮影からWeb制作まで、横浜の<br />
+        まちのホームページ屋さんにおまかせください
+      </p>
+
+      <a href="#contact" class="btn-line">
+        <svg width="22" height="22" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="10" fill="white" fill-opacity="0.25"/>
+          <path d="M24 8C15.163 8 8 14.477 8 22.4c0 4.752 2.614 8.977 6.67 11.693L13.2 40l6.02-3.072C20.713 37.27 22.33 37.6 24 37.6c8.837 0 16-6.477 16-14.2S32.837 8 24 8z" fill="white"/>
+        </svg>
+        LINEで無料相談する
+      </a>
+      <p class="hero-note">返信は翌営業日まで。お気軽にどうぞ 😊</p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ② サービス紹介
+  ========================================================== -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <span class="tag">SERVICE</span>
+        <h2>サービス内容</h2>
+        <p>必要なものを、必要なだけ。小さく始められます</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card fade-in">
+          <span class="service-icon">🖥️</span>
+          <h3>ホームページ制作</h3>
+          <p>スマホ対応のシンプルなサイトを丁寧に制作。初めての方でも安心してお任せいただけます。</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <span class="service-icon">📷</span>
+          <h3>写真撮影</h3>
+          <p>社内・店舗・スタッフ・商品など、サイトに使える写真を現地で撮影します。別途カメラマン手配は不要！</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <span class="service-icon">📱</span>
+          <h3>スマホ対応</h3>
+          <p>スマートフォンやタブレットでも見やすいレスポンシブ対応。Googleでも評価されやすい設計です。</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <span class="service-icon">✨</span>
+          <h3>AI活用で低価格</h3>
+          <p>AI技術を活用した効率的な制作プロセスで、大手制作会社よりもお手頃な価格をご提供します。</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ③ こんな方へ
+  ========================================================== -->
+  <section id="target" class="section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <span class="tag">FOR YOU</span>
+        <h2>こんな方におすすめです</h2>
+        <p>横浜周辺の中小企業・工務店・町工場・個人店舗さまへ</p>
+      </div>
+
+      <div class="target-grid">
+
+        <div class="target-item fade-in">
+          <div class="target-check">✓</div>
+          <p>
+            ホームページがない
+            <span>「まだ持っていないけど、いつか作りたい」という方</span>
+          </p>
+        </div>
+
+        <div class="target-item fade-in">
+          <div class="target-check">✓</div>
+          <p>
+            古いサイトをそのままにしている
+            <span>「10年前に作ったまま放置…」という方</span>
+          </p>
+        </div>
+
+        <div class="target-item fade-in">
+          <div class="target-check">✓</div>
+          <p>
+            会社の写真がない・少ない
+            <span>「スタッフ写真や施工事例の写真を増やしたい」という方</span>
+          </p>
+        </div>
+
+        <div class="target-item fade-in">
+          <div class="target-check">✓</div>
+          <p>
+            スマホで見られるようにしたい
+            <span>「お客さんがスマホで見ると崩れる…」という方</span>
+          </p>
+        </div>
+
+        <div class="target-item fade-in">
+          <div class="target-check">✓</div>
+          <p>
+            何を頼めばいいかわからない
+            <span>「IT系の会社は敷居が高くて…」という方</span>
+          </p>
+        </div>
+
+        <div class="target-item fade-in">
+          <div class="target-check">✓</div>
+          <p>
+            コストを抑えたい
+            <span>「大手に頼むほど予算がない…」という方</span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ④ 料金
+  ========================================================== -->
+  <section id="price" class="section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <span class="tag">PRICE</span>
+        <h2>料金プラン</h2>
+        <p>まずはライトプランでお試しいただけます</p>
+      </div>
+
+      <div class="price-grid">
+
+        <div class="price-card fade-in">
+          <div class="price-label">LIGHT PLAN</div>
+          <div class="price-name">ライトプラン</div>
+          <div class="price-amount">
+            <small>¥</small>49,800<small>〜</small>
+          </div>
+          <div class="price-note">（税込 ¥54,780〜）</div>
+          <ul class="price-list">
+            <li>1ページ 簡易サイト</li>
+            <li>スマホ対応</li>
+            <li>お問い合わせフォーム</li>
+            <li>Google マップ埋め込み</li>
+            <li>公開後1ヶ月サポート</li>
+          </ul>
+        </div>
+
+        <div class="price-card featured fade-in">
+          <div class="price-badge">人気</div>
+          <div class="price-label">STANDARD PLAN</div>
+          <div class="price-name">スタンダード</div>
+          <div class="price-amount">
+            <small>¥</small>98,000<small>〜</small>
+          </div>
+          <div class="price-note">（税込 ¥107,800〜）写真撮影込み</div>
+          <ul class="price-list">
+            <li>複数ページ構成</li>
+            <li>写真撮影（半日）込み</li>
+            <li>スマホ対応</li>
+            <li>お問い合わせフォーム</li>
+            <li>Google マップ埋め込み</li>
+            <li>SNSリンク設置</li>
+            <li>公開後3ヶ月サポート</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="price-disclaimer fade-in">
+        ※ 上記はご参考価格です。内容により変動します。まずはお気軽にご相談ください。<br />
+        ※ ドメイン・サーバー費用は別途実費となります。
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ⑤ 制作イメージ
+  ========================================================== -->
+  <section id="works" class="section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <span class="tag">WORKS</span>
+        <h2>制作イメージ</h2>
+        <p>こんな雰囲気のサイトが作れます（サンプルです）</p>
+      </div>
+
+      <div class="works-grid">
+
+        <div class="work-card fade-in">
+          <div class="work-thumb work-thumb-1">
+            🏠
+            <span class="work-thumb-label">工務店・リフォーム</span>
+          </div>
+          <div class="work-body">
+            <h3>〇〇工務店 様（サンプル）</h3>
+            <p>施工事例の写真を中心に、清潔感と信頼感のあるサイトに。お問い合わせが増えました。</p>
+            <div class="work-tags">
+              <span class="work-tag work-tag-blue">撮影込み</span>
+              <span class="work-tag work-tag-green">スマホ対応</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card fade-in">
+          <div class="work-thumb work-thumb-2">
+            ☕
+            <span class="work-thumb-label">カフェ・飲食店</span>
+          </div>
+          <div class="work-body">
+            <h3>〇〇カフェ 様（サンプル）</h3>
+            <p>メニューや店内の雰囲気が伝わる写真を撮影。SNSとの連動もスムーズに設定しました。</p>
+            <div class="work-tags">
+              <span class="work-tag work-tag-pink">1ページ構成</span>
+              <span class="work-tag work-tag-blue">撮影込み</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card fade-in">
+          <div class="work-thumb work-thumb-3">
+            🔧
+            <span class="work-thumb-label">製造・町工場</span>
+          </div>
+          <div class="work-body">
+            <h3>〇〇製作所 様（サンプル）</h3>
+            <p>現場の雰囲気と技術力が伝わるサイト。採用への問い合わせも増えたとのご連絡をいただきました。</p>
+            <div class="work-tags">
+              <span class="work-tag work-tag-green">撮影込み</span>
+              <span class="work-tag work-tag-blue">スマホ対応</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ⑥ お問い合わせ
+  ========================================================== -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="section-title fade-in" style="margin-bottom:32px;">
+        <span class="tag">CONTACT</span>
+        <h2>まずはお気軽にどうぞ</h2>
+        <p>
+          「どんなサイトが作れますか？」「予算はいくら必要ですか？」<br />
+          些細な疑問でも、LINEで気軽に聞いてください。
+        </p>
+      </div>
+
+      <div class="contact-flex fade-in">
+
+        <!-- QRコードエリア -->
+        <div class="contact-line-wrap">
+          <div class="qr-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6BBDD4" stroke-width="1.5">
+              <rect x="3" y="3" width="7" height="7" rx="1"/>
+              <rect x="14" y="3" width="7" height="7" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" rx="1"/>
+              <rect x="14" y="14" width="3" height="3"/>
+              <rect x="18" y="14" width="3" height="3"/>
+              <rect x="14" y="18" width="3" height="3"/>
+              <rect x="18" y="18" width="3" height="3"/>
+            </svg>
+            <span style="text-align:center;">QRコードを<br />ここに配置</span>
+          </div>
+          <span class="qr-label">カメラで読み取ってください</span>
+
+          <a href="#" class="btn-line" style="font-size:15px; padding:13px 28px;">
+            <svg width="20" height="20" viewBox="0 0 48 48" fill="none">
+              <path d="M24 8C15.163 8 8 14.477 8 22.4c0 4.752 2.614 8.977 6.67 11.693L13.2 40l6.02-3.072C20.713 37.27 22.33 37.6 24 37.6c8.837 0 16-6.477 16-14.2S32.837 8 24 8z" fill="white"/>
+            </svg>
+            LINEを開く
+          </a>
+        </div>
+
+        <div class="contact-or">または</div>
+
+        <!-- 連絡先情報 -->
+        <div class="contact-info fade-in">
+          <strong>まちのWEB写真室</strong><br />
+          📍 横浜市内（出張対応あり）<br />
+          🕘 受付：平日 9:00〜18:00<br />
+          📩 LINE返信：翌営業日まで<br />
+          <br />
+          <strong>対応エリア</strong><br />
+          横浜市・川崎市・相模原市<br />
+          その他の神奈川県エリアも応相談
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       フッター
+  ========================================================== -->
+  <footer>
+    <div class="footer-logo">まちのWEB<span>写真室</span></div>
+    <p>写真を撮れるホームページ屋さん</p>
+    <p style="margin-top:16px;">&copy; 2024 まちのWEB写真室. All Rights Reserved.</p>
+  </footer>
+
+  <!-- =========================================================
+       JavaScript: スクロールアニメーション
+  ========================================================== -->
+  <script>
+    (function () {
+      var targets = document.querySelectorAll('.fade-in');
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      targets.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>
