@@ -20,69 +20,19 @@ get_header();
 	<section class="section">
 		<div class="container">
 			<div style="max-width:800px;margin:0 auto;text-align:center;">
-				<span class="section-header__en" style="display:block;font-family:var(--font-en);font-size:13px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:16px;">Our Mission</span>
-				<h2 style="font-size:clamp(22px,3.5vw,38px);font-family:var(--font-heading);font-weight:400;color:var(--color-primary);margin-bottom:32px;line-height:1.5;letter-spacing:0.05em;">
+				<span style="display:block;font-family:var(--font-en);font-size:13px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:16px;">Our Mission</span>
+				<h2 style="font-size:clamp(22px,3.5vw,36px);font-family:var(--font-heading);font-weight:300;color:var(--color-primary);margin-bottom:32px;line-height:1.6;letter-spacing:0.02em;">
 					補助金を、中小企業の<br>「攻めの武器」にする。
 				</h2>
-				<p style="font-size:15px;color:var(--color-text-light);line-height:2.2;">
+				<p style="font-size:15px;color:var(--color-text-light);line-height:2.2;max-width:640px;margin:0 auto;">
 					株式会社レイノアは、補助金申請支援に特化したプロフェッショナル集団です。設備投資・新規事業・業務省力化を目指す企業が、補助金という公的資本を最大限に活用して事業を加速できるよう、採択可能性診断から実績報告まで一気通貫でサポートします。
 				</p>
 			</div>
 		</div>
 	</section>
 
-	<!-- Representative Profile -->
-	<section class="section section--light" aria-labelledby="ceo-heading">
-		<div class="container">
-			<div class="section-header fade-in">
-				<span class="section-header__en">Representative</span>
-				<h2 id="ceo-heading" class="section-header__title">代表者プロフィール</h2>
-			</div>
-
-			<div style="display:grid;grid-template-columns:280px 1fr;gap:60px;align-items:start;max-width:900px;margin:0 auto;">
-				<div class="fade-in" style="text-align:center;">
-					<div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#1a2f5a 0%,#2a4a8a 100%);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-						<span style="font-family:var(--font-en);font-size:80px;color:rgba(200,169,110,0.3);font-weight:700;">T</span>
-					</div>
-					<p style="font-size:20px;font-family:var(--font-heading);color:var(--color-primary);font-weight:500;margin-bottom:4px;">高尾 郷介</p>
-					<p style="font-size:12px;letter-spacing:0.1em;color:var(--color-text-muted);">代表取締役</p>
-				</div>
-				<div class="fade-in">
-					<h3 style="font-size:18px;font-family:var(--font-heading);color:var(--color-primary);margin-bottom:20px;font-weight:500;">代表取締役　高尾 郷介</h3>
-					<div style="font-size:14px;color:var(--color-text-light);line-height:2.2;margin-bottom:32px;">
-						<p>
-							京都大学大学院バイオテクノロジー専攻修了後、ダウ・ケミカル日本に入社。製造業・素材業界での事業開発を経験した後、株式会社インダストリアにて中小企業向けの補助金活用支援に従事。
-						</p>
-						<p>
-							その後、株式会社ライトアップにて補助金支援事業の立上げと全国展開を牽引し、多数の中小企業・スタートアップの採択を実現。2024年、補助金申請支援に特化した株式会社レイノアを設立。
-						</p>
-						<p>
-							「科学的思考×ビジネス戦略×補助金専門知識」を組み合わせた独自のアプローチで、単なる書類作成代行を超えた戦略的な申請支援を提供する。
-						</p>
-					</div>
-					<div style="display:flex;flex-direction:column;gap:8px;">
-						<?php
-						$career = array(
-							'京都大学大学院 バイオテクノロジー専攻 修了',
-							'ダウ・ケミカル日本 入社',
-							'株式会社インダストリア 補助金支援部門',
-							'株式会社ライトアップ 補助金支援体制の立上げ・事業拡大を牽引',
-							'2024年 株式会社レイノア 設立・代表取締役就任',
-						);
-						foreach ( $career as $item ) : ?>
-							<div style="display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--color-text-light);">
-								<span style="width:6px;height:6px;border-radius:50%;background:var(--color-accent);margin-top:7px;flex-shrink:0;"></span>
-								<?php echo esc_html( $item ); ?>
-							</div>
-						<?php endforeach; ?>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Company Overview -->
-	<section class="company section" aria-labelledby="company-heading">
+	<!-- Company Overview Table -->
+	<section class="company section section--light" aria-labelledby="company-heading">
 		<div class="container">
 			<div class="section-header fade-in">
 				<span class="section-header__en">Company Profile</span>
@@ -101,7 +51,14 @@ get_header();
 					</tr>
 					<tr>
 						<th scope="row">代表取締役</th>
-						<td>高尾 郷介</td>
+						<td>
+							高尾 郷介
+							<a href="<?php echo esc_url( home_url( '/profile' ) ); ?>" style="margin-left:16px;font-size:12px;color:var(--color-accent);border-bottom:1px solid var(--color-accent);">代表プロフィール →</a>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">所在地</th>
+						<td>（所在地はお問い合わせください）</td>
 					</tr>
 					<tr>
 						<th scope="row">事業内容</th>
@@ -127,14 +84,14 @@ get_header();
 		</div>
 	</section>
 
-	<!-- Values -->
-	<section class="section section--light" aria-labelledby="values-heading">
+	<!-- Strengths -->
+	<section class="section" aria-labelledby="strengths-heading">
 		<div class="container">
 			<div class="section-header fade-in">
 				<span class="section-header__en">Our Strengths</span>
-				<h2 id="values-heading" class="section-header__title">レイノアが選ばれる理由</h2>
+				<h2 id="strengths-heading" class="section-header__title">レイノアが選ばれる理由</h2>
 			</div>
-			<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
+			<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--color-border);">
 				<?php
 				$strengths = array(
 					array(
@@ -145,7 +102,7 @@ get_header();
 					array(
 						'en'   => 'End-to-End Support',
 						'ja'   => '一気通貫サポート',
-						'text' => '採択可能性診断・制度選定から事業計画作成・電子申請・実績報告まで、全ステップを一社で完結。複数社に依頼する手間がありません。',
+						'text' => '採択可能性診断・制度選定から事業計画作成・電子申請・実績報告まで、全ステップを一社で完結。',
 					),
 					array(
 						'en'   => 'Performance Fee',
@@ -155,11 +112,28 @@ get_header();
 				);
 				foreach ( $strengths as $s ) : ?>
 					<div class="fade-in" style="background:#fff;padding:40px 32px;border-bottom:3px solid var(--color-accent);">
-						<p style="font-family:var(--font-en);font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;"><?php echo esc_html( $s['en'] ); ?></p>
-						<h3 style="font-size:22px;font-family:var(--font-heading);color:var(--color-primary);margin-bottom:16px;"><?php echo esc_html( $s['ja'] ); ?></h3>
+						<p style="font-family:var(--font-en);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;"><?php echo esc_html( $s['en'] ); ?></p>
+						<h3 style="font-size:20px;font-family:var(--font-heading);color:var(--color-primary);margin-bottom:16px;font-weight:300;"><?php echo esc_html( $s['ja'] ); ?></h3>
 						<p style="font-size:14px;color:var(--color-text-light);line-height:2;margin:0;"><?php echo esc_html( $s['text'] ); ?></p>
 					</div>
 				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="contact-banner" aria-labelledby="about-cta">
+		<div class="contact-banner__deco"></div>
+		<div class="contact-banner__deco"></div>
+		<div class="container" style="position:relative;z-index:1;">
+			<span class="contact-banner__en">Free Consultation</span>
+			<h2 id="about-cta" class="contact-banner__title">まずは無料相談から</h2>
+			<p class="contact-banner__text">採択可能性の診断は無料です。お気軽にご相談ください。</p>
+			<div class="contact-banner__actions">
+				<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--accent">
+					無料相談はこちら
+					<span class="btn__arrow" aria-hidden="true"></span>
+				</a>
 			</div>
 		</div>
 	</section>

@@ -1680,6 +1680,11 @@ section[id] {
     padding-right: 0;
   }
 
+  /* Profile page: stack photo and bio */
+  .profile-grid {
+    grid-template-columns: 1fr !important;
+  }
+
   .about__values {
     grid-template-columns: 1fr;
   }

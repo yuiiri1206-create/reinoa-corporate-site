@@ -518,3 +518,49 @@ function reinoa_remove_version_strings( $src ) {
 }
 add_filter( 'style_loader_src', 'reinoa_remove_version_strings' );
 add_filter( 'script_loader_src', 'reinoa_remove_version_strings' );
+
+/* ============================================
+   Auto-create Required Pages
+   ============================================ */
+function reinoa_create_required_pages() {
+	$pages = array(
+		array(
+			'title'    => '会社概要',
+			'slug'     => 'about',
+			'template' => 'page-about.php',
+		),
+		array(
+			'title'    => '代表プロフィール',
+			'slug'     => 'profile',
+			'template' => 'page-profile.php',
+		),
+		array(
+			'title'    => 'お問い合わせ',
+			'slug'     => 'contact',
+			'template' => 'page-contact.php',
+		),
+	);
+
+	foreach ( $pages as $page ) {
+		if ( ! get_page_by_path( $page['slug'] ) ) {
+			$post_id = wp_insert_post( array(
+				'post_title'   => $page['title'],
+				'post_name'    => $page['slug'],
+				'post_status'  => 'publish',
+				'post_type'    => 'page',
+				'post_content' => '',
+			) );
+			if ( $post_id && ! is_wp_error( $post_id ) ) {
+				update_post_meta( $post_id, '_wp_page_template', $page['template'] );
+			}
+		}
+	}
+}
+add_action( 'after_switch_theme', 'reinoa_create_required_pages' );
+
+add_action( 'wp_loaded', function () {
+	if ( ! get_option( 'reinoa_pages_created_v1' ) ) {
+		reinoa_create_required_pages();
+		update_option( 'reinoa_pages_created_v1', true );
+	}
+} );

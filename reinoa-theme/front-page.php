@@ -351,9 +351,13 @@
 						</div>
 					</div>
 
-					<div style="margin-top:40px;">
+					<div style="margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;">
 						<a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="btn btn--primary">
-							会社概要・代表プロフィール
+							会社概要
+							<span class="btn__arrow" aria-hidden="true"></span>
+						</a>
+						<a href="<?php echo esc_url( home_url( '/profile' ) ); ?>" class="btn btn--outline">
+							代表プロフィール
 							<span class="btn__arrow" aria-hidden="true"></span>
 						</a>
 					</div>
