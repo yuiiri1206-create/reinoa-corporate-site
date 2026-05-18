@@ -153,9 +153,37 @@
     #hero {
       background: linear-gradient(135deg, var(--blue-l) 0%, var(--white) 55%, var(--pink-l) 100%);
       padding: 80px 20px 90px;
-      text-align: center;
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-left {
+      flex: 1;
+      text-align: left;
+    }
+
+    .hero-right {
+      flex-shrink: 0;
+      width: 320px;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.12);
     }
 
     /* 背景の丸 */
@@ -216,8 +244,6 @@
     }
 
     .hero-catch {
-      position: relative;
-      z-index: 1;
       animation: fadeUp .7s .15s ease both;
     }
 
@@ -256,8 +282,6 @@
       cursor: pointer;
       box-shadow: 0 6px 20px rgba(6,199,85,.35);
       transition: transform .2s, box-shadow .2s;
-      position: relative;
-      z-index: 1;
     }
     .btn-line:hover {
       transform: translateY(-2px);
@@ -270,8 +294,6 @@
       margin-top: 16px;
       font-size: 12px;
       color: var(--text-s);
-      position: relative;
-      z-index: 1;
     }
 
     /* ============================================================
@@ -695,6 +717,17 @@
       }
 
       .contact-or { padding: 0; }
+
+      .hero-inner {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-left { text-align: center; }
+      .hero-right {
+        width: 100%;
+        max-width: 320px;
+      }
+      .hero-right img { height: 280px; }
     }
   </style>
 </head>
@@ -719,31 +752,41 @@
        ① ファーストビュー
   ========================================================== -->
   <section id="hero">
-    <div class="hero-logo">
-      <div class="hero-logo-text">
-        <div class="hl-main"><span>まちの</span><br />WEB写真室</div>
-        <div class="hl-sub">写真を撮れるホームページ屋さん</div>
+    <div class="hero-inner">
+
+      <div class="hero-left">
+        <div class="hero-logo">
+          <div class="hero-logo-text">
+            <div class="hl-main"><span>まちの</span><br />WEB写真室</div>
+            <div class="hl-sub">写真を撮れるホームページ屋さん</div>
+          </div>
+        </div>
+
+        <div class="hero-catch">
+          <h1>
+            地元の小さな会社を、<br />
+            <em>ホームページ</em>で応援します
+          </h1>
+          <p>
+            写真撮影からWeb制作まで、横浜の<br />
+            まちのホームページ屋さんにおまかせください
+          </p>
+
+          <a href="https://lin.ee/7ZsYu0g" target="_blank" class="btn-line">
+            <svg width="22" height="22" viewBox="0 0 48 48" fill="none">
+              <rect width="48" height="48" rx="10" fill="white" fill-opacity="0.25"/>
+              <path d="M24 8C15.163 8 8 14.477 8 22.4c0 4.752 2.614 8.977 6.67 11.693L13.2 40l6.02-3.072C20.713 37.27 22.33 37.6 24 37.6c8.837 0 16-6.477 16-14.2S32.837 8 24 8z" fill="white"/>
+            </svg>
+            LINEで無料相談する
+          </a>
+          <p class="hero-note">返信は翌営業日まで。お気軽にどうぞ 😊</p>
+        </div>
       </div>
-    </div>
 
-    <div class="hero-catch">
-      <h1>
-        地元の小さな会社を、<br />
-        <em>ホームページ</em>で応援します
-      </h1>
-      <p>
-        写真撮影からWeb制作まで、横浜の<br />
-        まちのホームページ屋さんにおまかせください
-      </p>
+      <div class="hero-right">
+        <img src="photo.jpg" alt="カメラを持つまちのWEB写真室" />
+      </div>
 
-      <a href="https://lin.ee/7ZsYu0g" target="_blank" class="btn-line">
-        <svg width="22" height="22" viewBox="0 0 48 48" fill="none">
-          <rect width="48" height="48" rx="10" fill="white" fill-opacity="0.25"/>
-          <path d="M24 8C15.163 8 8 14.477 8 22.4c0 4.752 2.614 8.977 6.67 11.693L13.2 40l6.02-3.072C20.713 37.27 22.33 37.6 24 37.6c8.837 0 16-6.477 16-14.2S32.837 8 24 8z" fill="white"/>
-        </svg>
-        LINEで無料相談する
-      </a>
-      <p class="hero-note">返信は翌営業日まで。お気軽にどうぞ 😊</p>
     </div>
   </section>
 
