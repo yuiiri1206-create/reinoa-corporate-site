@@ -349,6 +349,20 @@ function reinoa_customize_register( $wp_customize ) {
 		'mime_type' => 'image',
 	) ) );
 
+	// Representative Profile Photo
+	$wp_customize->add_section( 'reinoa_profile', array(
+		'title'    => __( '代表プロフィール', 'reinoa' ),
+		'priority' => 35,
+	) );
+	$wp_customize->add_setting( 'profile_photo', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'profile_photo', array(
+		'label'   => __( '代表写真', 'reinoa' ),
+		'section' => 'reinoa_profile',
+	) ) );
+
 	// SNS Links
 	$wp_customize->add_section( 'reinoa_sns', array(
 		'title'    => __( 'SNSリンク', 'reinoa' ),
