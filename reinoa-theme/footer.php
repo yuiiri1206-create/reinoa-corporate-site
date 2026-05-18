@@ -141,6 +141,7 @@ function reinoa_footer_nav_1_fallback() {
 function reinoa_footer_nav_2_fallback() {
 	$items = array(
 		'about'   => '会社概要',
+		'profile' => '代表プロフィール',
 		'contact' => 'お問い合わせ',
 	);
 	echo '<ul class="footer-nav__list">';
