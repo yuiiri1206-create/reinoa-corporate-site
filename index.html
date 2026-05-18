@@ -117,10 +117,20 @@
       margin: 0 auto;
     }
 
-    .logo-wrap img {
-      height: 48px;
-      width: auto;
-      display: inline-block;
+    .logo-fallback {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .logo-fallback .logo-main {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .logo-fallback .logo-main span { color: var(--pink); }
+    .logo-fallback .logo-sub {
+      font-size: 10px;
+      color: var(--text-s);
     }
 
     .header-cta {
@@ -693,7 +703,10 @@
   <header>
     <div class="header-inner">
       <a href="#" class="logo-wrap">
-        <img src="logo.jpg" alt="まちのWEB写真室" />
+        <div class="logo-fallback">
+          <span class="logo-main"><span>まちの</span>WEB写真室</span>
+          <span class="logo-sub">写真を撮れるホームページ屋さん</span>
+        </div>
       </a>
       <a href="#contact" class="header-cta">無料相談はこちら</a>
     </div>
@@ -704,7 +717,10 @@
   ========================================================== -->
   <section id="hero">
     <div class="hero-logo">
-      <img src="logo.jpg" alt="まちのWEB写真室 ロゴ" />
+      <div class="hero-logo-text">
+        <div class="hl-main"><span>まちの</span>WEB写真室</div>
+        <div class="hl-sub">写真を撮れるホームページ屋さん</div>
+      </div>
     </div>
 
     <div class="hero-catch">
