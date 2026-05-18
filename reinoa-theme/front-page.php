@@ -304,17 +304,12 @@
 			<div class="about__inner">
 				<div class="about__image fade-in">
 					<?php
-					$about_img_url = get_theme_mod( 'about_image' );
-					if ( $about_img_url ) : ?>
-						<img src="<?php echo esc_url( $about_img_url ); ?>"
-						     alt="代表取締役 高尾郷介"
-						     class="about__image-main"
-						     style="width:100%;height:100%;object-fit:cover;display:block;">
-					<?php else : ?>
-						<div class="about__image-main" style="background:var(--color-bg-dark);display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;">
-							<span style="font-family:var(--font-en);font-size:80px;color:var(--color-accent);opacity:0.3;font-weight:300;">R</span>
-						</div>
-					<?php endif; ?>
+					$about_img_url = get_theme_mod( 'about_image', home_url( '/wp-content/uploads/2026/05/34558864_m.jpg' ) );
+					?>
+					<img src="<?php echo esc_url( $about_img_url ); ?>"
+					     alt="代表取締役 高尾郷介"
+					     class="about__image-main"
+					     style="width:100%;height:100%;object-fit:cover;display:block;">
 					<div class="about__image-deco" aria-hidden="true"></div>
 					<div class="about__image-label">
 						<span>設立</span>
