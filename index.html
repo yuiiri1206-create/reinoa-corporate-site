@@ -275,6 +275,103 @@
       background: var(--accent);
     }
 
+    /* ========== GREETING ========== */
+    #greeting {
+      background: var(--gray-light);
+    }
+
+    .greeting-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .greeting-photo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .greeting-photo-img {
+      width: 220px;
+      height: 280px;
+      background: linear-gradient(160deg, #c8d4e0 0%, #a8bcd0 100%);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6a80a0;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+
+    .greeting-name-block {
+      text-align: center;
+    }
+
+    .greeting-position {
+      font-size: 0.72rem;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .greeting-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy-dark);
+      letter-spacing: 0.06em;
+    }
+
+    .greeting-body {
+      padding-top: 4px;
+    }
+
+    .greeting-lead {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      font-weight: 700;
+      color: var(--navy-dark);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      padding-left: 16px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .greeting-text {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 2;
+    }
+
+    .greeting-text p + p {
+      margin-top: 1.4em;
+    }
+
+    @media (max-width: 768px) {
+      .greeting-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .greeting-photo {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 20px;
+      }
+
+      .greeting-photo-img {
+        width: 140px;
+        height: 180px;
+        flex-shrink: 0;
+      }
+
+      .greeting-name-block {
+        text-align: left;
+      }
+    }
+
     /* ========== OVERVIEW ========== */
     #overview {
       background: var(--white);
@@ -630,6 +727,7 @@
         <span class="logo-en">Sanshin Plastic Co., Ltd.</span>
       </a>
       <nav>
+        <a href="#greeting">代表挨拶</a>
         <a href="#overview">会社概要</a>
         <a href="#business">事業内容</a>
         <a href="#contact">お問い合わせ</a>
@@ -641,6 +739,7 @@
       </button>
     </div>
     <div class="mobile-nav" id="mobileNav">
+      <a href="#greeting" onclick="closeMenu()">代表挨拶</a>
       <a href="#overview" onclick="closeMenu()">会社概要</a>
       <a href="#business" onclick="closeMenu()">事業内容</a>
       <a href="#contact" onclick="closeMenu()">お問い合わせ</a>
@@ -663,6 +762,49 @@
       <a href="#business" class="hero-cta">事業内容を見る</a>
     </div>
     <div class="hero-decoration"></div>
+  </section>
+
+  <!-- ========== GREETING ========== -->
+  <section id="greeting">
+    <div class="section-inner">
+      <p class="section-label">President's Message</p>
+      <h2 class="section-title">代表挨拶</h2>
+      <div class="greeting-grid">
+        <div class="greeting-photo">
+          <div class="greeting-photo-img">代表者写真</div>
+          <div class="greeting-name-block">
+            <p class="greeting-position">代表取締役</p>
+            <p class="greeting-name">氏名</p>
+          </div>
+        </div>
+        <div class="greeting-body">
+          <p class="greeting-lead">
+            誠実なものづくりで、<br>お客様の信頼にお応えする。
+          </p>
+          <div class="greeting-text">
+            <p>
+              三伸プラスチック株式会社のホームページをご覧いただき、誠にありがとうございます。
+            </p>
+            <p>
+              当社は昭和41年の創業以来、プラスチック精密工業部品の製造・金型設計を専門とし、
+              長きにわたってお客様のものづくりを支えてまいりました。
+              小規模ながらも、一人ひとりの職人が技術と誠実さをもって仕事に向き合っており、
+              それが当社の最大の強みであると考えています。
+            </p>
+            <p>
+              プラスチック加工の世界は、素材・成形技術・金型設計が三位一体となって
+              はじめて高精度な製品が生まれます。
+              当社ではこれらを社内で一貫して手掛けることにより、
+              お客様のご要望に柔軟かつ迅速に対応できる体制を整えています。
+            </p>
+            <p>
+              これからも「精密と信頼」を軸に、皆様のご期待に応え続けてまいります。
+              どうぞお気軽にご相談ください。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ========== COMPANY OVERVIEW ========== -->
@@ -802,6 +944,7 @@
           </address>
         </div>
         <nav class="footer-nav">
+          <a href="#greeting">代表挨拶</a>
           <a href="#overview">会社概要</a>
           <a href="#business">事業内容</a>
           <a href="#contact">お問い合わせ</a>
