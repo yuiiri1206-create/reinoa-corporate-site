@@ -335,6 +335,209 @@
       color: var(--white);
     }
 
+    /* ========== GREETING ========== */
+    #greeting { background: var(--white); }
+
+    .greeting-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .greeting-photo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .greeting-photo-ph {
+      width: 200px;
+      height: 260px;
+      border-radius: 3px;
+      background: linear-gradient(160deg, #c0cad4 0%, #98a8b8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: #5a6878;
+    }
+
+    .greeting-bio { text-align: center; }
+
+    .greeting-position {
+      font-size: 0.72rem;
+      color: var(--silver);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .greeting-name {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: 0.08em;
+    }
+
+    .greeting-content { padding-top: 4px; }
+
+    .greeting-lead {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      padding-left: 18px;
+      border-left: 3px solid var(--blue);
+    }
+
+    .greeting-body {
+      font-size: 0.88rem;
+      color: #374151;
+      line-height: 2;
+    }
+
+    .greeting-body p + p { margin-top: 1.3em; }
+
+    /* ========== RECRUIT ========== */
+    #recruit { background: var(--dark-mid); }
+
+    .recruit-intro {
+      max-width: 640px;
+      margin-bottom: 52px;
+    }
+
+    .recruit-intro p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.9;
+    }
+
+    .recruit-jobs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-bottom: 48px;
+    }
+
+    .job-card {
+      background: var(--dark-light);
+      padding: 32px 28px;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .job-card:hover { background: #2e3844; }
+
+    .job-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gray-line);
+      transition: background 0.2s;
+    }
+
+    .job-card:hover::after { background: var(--blue); }
+
+    .job-tag {
+      display: inline-block;
+      background: var(--blue-dim);
+      border: 1px solid rgba(42,114,200,0.3);
+      color: var(--blue-light);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      padding: 3px 10px;
+      border-radius: 2px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .job-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .job-desc {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .job-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .job-skill {
+      font-size: 0.68rem;
+      color: var(--silver);
+      border: 1px solid var(--steel);
+      padding: 2px 9px;
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    .recruit-cta {
+      background: var(--dark-light);
+      border: 1px solid var(--gray-line);
+      border-left: 3px solid var(--blue);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .recruit-cta-text {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .recruit-cta-text strong {
+      display: block;
+      font-size: 0.96rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .recruit-tel {
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .recruit-tel-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      color: var(--blue-light);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .recruit-tel-num {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .recruit-tel-num:hover { color: var(--blue-light); }
+
     /* ========== OVERVIEW ========== */
     #overview { background: var(--off-white); }
 
@@ -700,6 +903,11 @@
       .products-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .recruit-jobs {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -707,6 +915,32 @@
       .hamburger { display: flex; }
 
       section { padding: 64px 20px; }
+
+      .greeting-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .greeting-photo-wrap {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 20px;
+      }
+
+      .greeting-photo-ph {
+        width: 130px;
+        height: 170px;
+        flex-shrink: 0;
+      }
+
+      .greeting-bio { text-align: left; }
+
+      .recruit-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .recruit-tel { text-align: left; }
 
       .overview-layout {
         grid-template-columns: 1fr;
@@ -750,9 +984,11 @@
         <span class="logo-en">Ando Seisakusho Co., Ltd.</span>
       </a>
       <nav>
+        <a href="#greeting">代表挨拶</a>
         <a href="#overview">会社概要</a>
         <a href="#business">事業内容</a>
         <a href="#products">主要製品</a>
+        <a href="#recruit">採用情報</a>
         <a href="#contact">お問い合わせ</a>
       </nav>
       <button class="hamburger" aria-label="メニュー" onclick="toggleMenu()">
@@ -760,9 +996,11 @@
       </button>
     </div>
     <div class="mobile-nav" id="mobileNav">
+      <a href="#greeting" onclick="closeMenu()">代表挨拶</a>
       <a href="#overview" onclick="closeMenu()">会社概要</a>
       <a href="#business" onclick="closeMenu()">事業内容</a>
       <a href="#products" onclick="closeMenu()">主要製品</a>
+      <a href="#recruit" onclick="closeMenu()">採用情報</a>
       <a href="#contact" onclick="closeMenu()">お問い合わせ</a>
     </div>
   </header>
@@ -796,6 +1034,52 @@
       <div class="hero-stat">
         <p class="hero-stat-label">Business</p>
         <p class="hero-stat-value">金属製品製造業</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GREETING ========== -->
+  <section id="greeting">
+    <div class="section-inner">
+      <div class="section-eyebrow">
+        <span class="section-eyebrow-line"></span>
+        <span class="section-eyebrow-text">President's Message</span>
+      </div>
+      <h2 class="section-title">代表挨拶</h2>
+      <div class="greeting-layout">
+        <div class="greeting-photo-wrap">
+          <div class="greeting-photo-ph">代表者写真</div>
+          <div class="greeting-bio">
+            <p class="greeting-position">代表取締役</p>
+            <p class="greeting-name">安藤 将広</p>
+          </div>
+        </div>
+        <div class="greeting-content">
+          <p class="greeting-lead">
+            技術で応える、誠実に。<br>
+            それが安藤製作所の変わらぬ姿勢です。
+          </p>
+          <div class="greeting-body">
+            <p>
+              弊社ホームページをご覧いただき、誠にありがとうございます。
+              代表取締役の安藤将広でございます。
+            </p>
+            <p>
+              当社は神奈川県横浜市を拠点に、弱電機部品の製造・金型製作・プレス部品加工を
+              中心とした金属精密加工を手掛けてまいりました。
+              通信機器・自動車・錠前など、幅広い産業の現場で使われる部品を、
+              一つひとつ確かな技術と責任感をもって製造しています。
+            </p>
+            <p>
+              「小さな部品が社会を動かす」という信念のもと、
+              お客様のご要望に真摯に向き合い、品質・納期・コストの三点で
+              信頼いただける会社であり続けることを目指しています。
+            </p>
+            <p>
+              今後とも、株式会社安藤製作所をどうぞよろしくお願いいたします。
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -967,6 +1251,77 @@
     </div>
   </section>
 
+  <!-- ========== RECRUIT ========== -->
+  <section id="recruit">
+    <div class="section-inner">
+      <div class="section-eyebrow">
+        <span class="section-eyebrow-line"></span>
+        <span class="section-eyebrow-text">Recruit</span>
+      </div>
+      <h2 class="section-title section-title-white">採用情報</h2>
+      <div class="recruit-intro">
+        <p>
+          安藤製作所では、ものづくりに真摯に向き合える仲間を募集しています。
+          未経験者も歓迎。先輩スタッフが丁寧にサポートする環境で、
+          金属加工のプロフェッショナルとして成長できます。
+          詳しい勤務条件等はお電話にてお問い合わせください。
+        </p>
+      </div>
+      <div class="recruit-jobs">
+
+        <div class="job-card">
+          <span class="job-tag">Manufacturing</span>
+          <h3 class="job-title">プレスオペレーター</h3>
+          <p class="job-desc">
+            プレス機を操作し、精密部品の成形加工を担当します。
+            段取り替えや品質チェックも含めたオールラウンドな役割です。
+          </p>
+          <div class="job-skills">
+            <span class="job-skill">未経験歓迎</span>
+            <span class="job-skill">プレス加工</span>
+          </div>
+        </div>
+
+        <div class="job-card">
+          <span class="job-tag">Engineering</span>
+          <h3 class="job-title">金型製作スタッフ</h3>
+          <p class="job-desc">
+            プレス用金型の設計・製作・メンテナンスを担います。
+            精度と工夫が求められる、技術力の核心を担うポジションです。
+          </p>
+          <div class="job-skills">
+            <span class="job-skill">機械加工</span>
+            <span class="job-skill">金型設計</span>
+          </div>
+        </div>
+
+        <div class="job-card">
+          <span class="job-tag">Quality</span>
+          <h3 class="job-title">品質管理・検査</h3>
+          <p class="job-desc">
+            製品の寸法・外観検査を行い、出荷品質を守る重要な役割です。
+            正確さと責任感を持って取り組める方を歓迎します。
+          </p>
+          <div class="job-skills">
+            <span class="job-skill">品質管理</span>
+            <span class="job-skill">測定器使用</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="recruit-cta">
+        <div class="recruit-cta-text">
+          <strong>採用に関するお問い合わせ</strong>
+          勤務条件・待遇・選考方法など、お気軽にお電話でお問い合わせください。
+        </div>
+        <div class="recruit-tel">
+          <p class="recruit-tel-label">TEL</p>
+          <a href="tel:0455426402" class="recruit-tel-num">045-542-6402</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== CONTACT ========== -->
   <section id="contact">
     <div class="section-inner">
@@ -1006,9 +1361,11 @@
           </address>
         </div>
         <nav class="footer-links">
+          <a href="#greeting">代表挨拶</a>
           <a href="#overview">会社概要</a>
           <a href="#business">事業内容</a>
           <a href="#products">主要製品</a>
+          <a href="#recruit">採用情報</a>
           <a href="#contact">お問い合わせ</a>
         </nav>
       </div>
