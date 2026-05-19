@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三伸プラスチック株式会社</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #1a2b4a;
+      --navy-dark: #111e33;
+      --navy-light: #2c4070;
+      --gray: #6b7280;
+      --gray-light: #f3f4f6;
+      --gray-mid: #d1d5db;
+      --white: #ffffff;
+      --accent: #3b6ab0;
+      --text: #1f2937;
+      --text-light: #6b7280;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background: var(--white);
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--navy-dark);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .logo-ja {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .logo-en {
+      font-size: 0.62rem;
+      color: var(--gray-mid);
+      letter-spacing: 0.08em;
+      font-weight: 400;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--gray-mid);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--white);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+
+    .mobile-nav {
+      display: none;
+      background: var(--navy-dark);
+      padding: 16px 24px 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mobile-nav.open {
+      display: block;
+    }
+
+    .mobile-nav a {
+      display: block;
+      color: var(--gray-mid);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      letter-spacing: 0.05em;
+    }
+
+    .mobile-nav a:last-child {
+      border-bottom: none;
+    }
+
+    /* ========== HERO ========== */
+    #hero {
+      margin-top: 64px;
+      min-height: calc(100vh - 64px);
+      background: linear-gradient(160deg, var(--navy-dark) 0%, var(--navy-light) 60%, #3b5a8a 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect x='0' y='0' width='60' height='60' fill='none'/%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' stroke='rgba(255,255,255,0.03)' stroke-width='1' fill='none'/%3E%3C/svg%3E") repeat;
+      opacity: 1;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-label {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.4;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+    }
+
+    .hero-title span {
+      color: #9ab8e0;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--white);
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 3px;
+      letter-spacing: 0.06em;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .hero-cta:hover {
+      background: var(--gray-light);
+    }
+
+    .hero-decoration {
+      position: absolute;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero-decoration::after {
+      content: '';
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* ========== SECTION COMMON ========== */
+    section {
+      padding: 80px 24px;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: var(--navy-dark);
+      letter-spacing: 0.04em;
+      margin-bottom: 40px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--gray-mid);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 56px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    /* ========== OVERVIEW ========== */
+    #overview {
+      background: var(--white);
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .overview-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .overview-table tr {
+      border-bottom: 1px solid var(--gray-mid);
+    }
+
+    .overview-table tr:first-child {
+      border-top: 1px solid var(--gray-mid);
+    }
+
+    .overview-table th {
+      text-align: left;
+      padding: 14px 16px 14px 0;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+      width: 30%;
+      vertical-align: top;
+    }
+
+    .overview-table td {
+      padding: 14px 0;
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .overview-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .visual-block {
+      background: var(--gray-light);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .visual-block-main {
+      height: 200px;
+      background: linear-gradient(135deg, #cdd8e8 0%, #b0c0d8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7a8eaa;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+    }
+
+    .visual-block-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .visual-block-small {
+      height: 110px;
+      background: linear-gradient(135deg, #d8dde6 0%, #c4ccd8 100%);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7a8294;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* ========== BUSINESS ========== */
+    #business {
+      background: var(--gray-light);
+    }
+
+    .business-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .business-card {
+      background: var(--white);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .business-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+
+    .card-img {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+
+    .card-img-1 {
+      background: linear-gradient(135deg, #b8c8d8 0%, #8fa8c0 100%);
+      color: #4a6280;
+    }
+
+    .card-img-2 {
+      background: linear-gradient(135deg, #c0c8d4 0%, #9aaac0 100%);
+      color: #4a5a70;
+    }
+
+    .card-img-3 {
+      background: linear-gradient(135deg, #c4ccd8 0%, #a0b0c4 100%);
+      color: #506070;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .card-number {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin-bottom: 12px;
+      letter-spacing: 0.03em;
+      line-height: 1.4;
+    }
+
+    .card-desc {
+      font-size: 0.84rem;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    /* ========== CONTACT ========== */
+    #contact {
+      background: var(--white);
+    }
+
+    .contact-box {
+      background: var(--navy-dark);
+      border-radius: 6px;
+      padding: 56px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .contact-text h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-text p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      max-width: 380px;
+    }
+
+    .contact-tel-block {
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .tel-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .tel-number {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .tel-number:hover {
+      color: #9ab8e0;
+    }
+
+    .tel-hours {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #0e1622;
+      color: rgba(255,255,255,0.5);
+      padding: 40px 24px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 20px;
+    }
+
+    .footer-company {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-address {
+      font-size: 0.8rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: right;
+    }
+
+    .footer-nav a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover {
+      color: rgba(255,255,255,0.8);
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .demo-notice {
+      display: inline-block;
+      background: rgba(255,200,0,0.12);
+      border: 1px solid rgba(255,200,0,0.25);
+      color: rgba(255,220,80,0.8);
+      font-size: 0.7rem;
+      padding: 4px 14px;
+      border-radius: 2px;
+      letter-spacing: 0.06em;
+    }
+
+    .copyright {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+
+      section { padding: 60px 20px; }
+
+      .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .business-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .contact-box {
+        flex-direction: column;
+        padding: 36px 28px;
+        text-align: center;
+      }
+
+      .contact-text p { max-width: none; }
+
+      .footer-top {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .footer-nav {
+        text-align: left;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-decoration { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header>
+    <div class="header-inner">
+      <a href="#hero" class="logo">
+        <span class="logo-ja">三伸プラスチック株式会社</span>
+        <span class="logo-en">Sanshin Plastic Co., Ltd.</span>
+      </a>
+      <nav>
+        <a href="#overview">会社概要</a>
+        <a href="#business">事業内容</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+      <button class="hamburger" aria-label="メニュー" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#overview" onclick="closeMenu()">会社概要</a>
+      <a href="#business" onclick="closeMenu()">事業内容</a>
+      <a href="#contact" onclick="closeMenu()">お問い合わせ</a>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section id="hero">
+    <div class="hero-inner">
+      <p class="hero-label">Sanshin Plastic Co., Ltd.</p>
+      <h1 class="hero-title">
+        精密と信頼を、<br>
+        <span>小さな部品に込めて。</span>
+      </h1>
+      <p class="hero-sub">
+        昭和41年の創業以来、プラスチック精密部品の製造・金型設計を通じて、
+        ものづくりの現場を支え続けてきました。
+        一つひとつの部品に、誠実な技術と長年の経験を込めています。
+      </p>
+      <a href="#business" class="hero-cta">事業内容を見る</a>
+    </div>
+    <div class="hero-decoration"></div>
+  </section>
+
+  <!-- ========== COMPANY OVERVIEW ========== -->
+  <section id="overview">
+    <div class="section-inner">
+      <p class="section-label">Company Profile</p>
+      <h2 class="section-title">会社概要</h2>
+      <div class="overview-grid">
+        <div>
+          <table class="overview-table">
+            <tr>
+              <th>会社名</th>
+              <td>三伸プラスチック株式会社</td>
+            </tr>
+            <tr>
+              <th>設立</th>
+              <td>昭和41年（1966年）</td>
+            </tr>
+            <tr>
+              <th>代表者</th>
+              <td>代表取締役</td>
+            </tr>
+            <tr>
+              <th>従業員</th>
+              <td>約16名</td>
+            </tr>
+            <tr>
+              <th>所在地</th>
+              <td>〒223-0052<br>神奈川県横浜市港北区<br>綱島東6-11-1</td>
+            </tr>
+            <tr>
+              <th>TEL</th>
+              <td><a href="tel:0455422881" style="color: var(--accent); text-decoration: none; font-weight: 600;">045-542-2881</a></td>
+            </tr>
+            <tr>
+              <th>事業内容</th>
+              <td>プラスチック精密工業部品製造<br>金型設計・製造</td>
+            </tr>
+          </table>
+        </div>
+        <div class="overview-visual">
+          <div class="visual-block">
+            <div class="visual-block-main">工場外観・イメージ</div>
+          </div>
+          <div class="visual-block-row">
+            <div class="visual-block-small">製造現場</div>
+            <div class="visual-block-small">製品イメージ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BUSINESS ========== -->
+  <section id="business">
+    <div class="section-inner">
+      <p class="section-label">Our Business</p>
+      <h2 class="section-title">事業内容</h2>
+      <div class="business-cards">
+
+        <div class="business-card">
+          <div class="card-img card-img-1">製品イメージ</div>
+          <div class="card-body">
+            <p class="card-number">01</p>
+            <h3 class="card-title">プラスチック精密部品製造</h3>
+            <p class="card-desc">
+              工業用精密プラスチック部品の設計・製造を行っています。
+              射出成形を中心に、厳密な寸法精度と品質管理のもと、
+              お客様の要望に応じた部品を安定供給しています。
+            </p>
+          </div>
+        </div>
+
+        <div class="business-card">
+          <div class="card-img card-img-2">金型イメージ</div>
+          <div class="card-body">
+            <p class="card-number">02</p>
+            <h3 class="card-title">金型設計・製作</h3>
+            <p class="card-desc">
+              プラスチック成形に用いる金型の設計・製作を一貫して手掛けています。
+              長年のノウハウを活かし、複雑な形状にも対応した
+              高精度な金型をご提供します。
+            </p>
+          </div>
+        </div>
+
+        <div class="business-card">
+          <div class="card-img card-img-3">素材・製品イメージ</div>
+          <div class="card-body">
+            <p class="card-number">03</p>
+            <h3 class="card-title">ウルトラスーパーエンプラ製品</h3>
+            <p class="card-desc">
+              PEEK・PPS・LCPなどのスーパーエンジニアリングプラスチックを用いた
+              高機能部品の製造にも対応。
+              耐熱・耐薬品・高強度が求められる用途にお応えします。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">お問い合わせ</h2>
+      <div class="contact-box">
+        <div class="contact-text">
+          <h3>お気軽にご相談ください</h3>
+          <p>
+            製品のご相談・お見積もり・技術的なご質問など、
+            どんなことでもお電話にてお受けしております。
+            経験豊富なスタッフが丁寧にご対応いたします。
+          </p>
+        </div>
+        <div class="contact-tel-block">
+          <p class="tel-label">TEL</p>
+          <a href="tel:0455422881" class="tel-number">045-542-2881</a>
+          <p class="tel-hours">平日 8:30〜17:30（土日祝除く）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <p class="footer-company">三伸プラスチック株式会社</p>
+          <address class="footer-address" style="font-style: normal;">
+            〒223-0052<br>
+            神奈川県横浜市港北区綱島東6-11-1<br>
+            TEL: 045-542-2881
+          </address>
+        </div>
+        <nav class="footer-nav">
+          <a href="#overview">会社概要</a>
+          <a href="#business">事業内容</a>
+          <a href="#contact">お問い合わせ</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="demo-notice">このサイトはデモ用サンプルです。実際のウェブサイトではありません。</span>
+        <p class="copyright">&copy; 2024 三伸プラスチック株式会社. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('open');
+    }
+
+    function closeMenu() {
+      document.getElementById('mobileNav').classList.remove('open');
+    }
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', function(e) {
+      const nav = document.getElementById('mobileNav');
+      const btn = document.querySelector('.hamburger');
+      if (!nav.contains(e.target) && !btn.contains(e.target)) {
+        nav.classList.remove('open');
+      }
+    });
+
+    // Smooth scroll offset for fixed header
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const offset = 64;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
