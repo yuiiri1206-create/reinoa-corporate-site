@@ -132,16 +132,16 @@ function reinoa_register_post_types() {
 	// News
 	register_post_type( 'news', array(
 		'labels'              => array(
-			'name'               => __( 'ニュース', 'reinoa' ),
-			'singular_name'      => __( 'ニュース', 'reinoa' ),
+			'name'               => __( 'お知らせ', 'reinoa' ),
+			'singular_name'      => __( 'お知らせ', 'reinoa' ),
 			'add_new'            => __( '新規追加', 'reinoa' ),
-			'add_new_item'       => __( '新しいニュースを追加', 'reinoa' ),
-			'edit_item'          => __( 'ニュースを編集', 'reinoa' ),
-			'new_item'           => __( '新しいニュース', 'reinoa' ),
-			'view_item'          => __( 'ニュースを表示', 'reinoa' ),
-			'search_items'       => __( 'ニュースを検索', 'reinoa' ),
-			'not_found'          => __( 'ニュースが見つかりません', 'reinoa' ),
-			'not_found_in_trash' => __( 'ゴミ箱にニュースはありません', 'reinoa' ),
+			'add_new_item'       => __( '新しいお知らせを追加', 'reinoa' ),
+			'edit_item'          => __( 'お知らせを編集', 'reinoa' ),
+			'new_item'           => __( '新しいお知らせ', 'reinoa' ),
+			'view_item'          => __( 'お知らせを表示', 'reinoa' ),
+			'search_items'       => __( 'お知らせを検索', 'reinoa' ),
+			'not_found'          => __( 'お知らせが見つかりません', 'reinoa' ),
+			'not_found_in_trash' => __( 'ゴミ箱にお知らせはありません', 'reinoa' ),
 		),
 		'public'              => true,
 		'has_archive'         => true,
@@ -178,8 +178,8 @@ add_action( 'init', 'reinoa_register_post_types' );
 function reinoa_register_taxonomies() {
 	register_taxonomy( 'news_category', 'news', array(
 		'labels'            => array(
-			'name'              => __( 'ニュースカテゴリー', 'reinoa' ),
-			'singular_name'     => __( 'ニュースカテゴリー', 'reinoa' ),
+			'name'              => __( 'お知らせカテゴリー', 'reinoa' ),
+			'singular_name'     => __( 'お知らせカテゴリー', 'reinoa' ),
 			'add_new_item'      => __( '新しいカテゴリーを追加', 'reinoa' ),
 			'edit_item'         => __( 'カテゴリーを編集', 'reinoa' ),
 		),
@@ -462,7 +462,7 @@ function reinoa_breadcrumb() {
 	echo '<li class="breadcrumb__sep">／</li>';
 	if ( is_singular( 'post' ) || is_singular( 'news' ) ) {
 		$post_type = get_post_type();
-		$label     = $post_type === 'news' ? __( 'ニュース', 'reinoa' ) : __( 'ブログ', 'reinoa' );
+		$label     = $post_type === 'news' ? __( 'お知らせ', 'reinoa' ) : __( 'ブログ', 'reinoa' );
 		echo '<li><a href="' . esc_url( get_post_type_archive_link( $post_type ) ) . '">' . $label . '</a></li>';
 		echo '<li class="breadcrumb__sep">／</li>';
 		echo '<li>' . get_the_title() . '</li>';
@@ -587,5 +587,25 @@ add_action( 'wp_loaded', function () {
 	if ( ! get_option( 'reinoa_pages_created_v1' ) ) {
 		reinoa_create_required_pages();
 		update_option( 'reinoa_pages_created_v1', true );
+	}
+} );
+
+/* ============================================
+   Auto-create News Categories
+   ============================================ */
+function reinoa_create_news_categories() {
+	$categories = array( '補助金コラム', '採択実績', '会社からのお知らせ' );
+	foreach ( $categories as $cat ) {
+		if ( ! term_exists( $cat, 'news_category' ) ) {
+			wp_insert_term( $cat, 'news_category' );
+		}
+	}
+}
+add_action( 'after_switch_theme', 'reinoa_create_news_categories' );
+
+add_action( 'wp_loaded', function () {
+	if ( ! get_option( 'reinoa_news_cats_created_v1' ) ) {
+		reinoa_create_news_categories();
+		update_option( 'reinoa_news_cats_created_v1', true );
 	}
 } );

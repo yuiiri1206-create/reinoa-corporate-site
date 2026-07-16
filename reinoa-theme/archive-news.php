@@ -4,8 +4,8 @@
 
 	<div class="page-hero">
 		<div class="container">
-			<span class="page-hero__en">News &amp; Topics</span>
-			<h1 class="page-hero__title"><?php _e( 'ニュース', 'reinoa' ); ?></h1>
+			<span class="page-hero__en">News &amp; Information</span>
+			<h1 class="page-hero__title"><?php _e( 'お知らせ', 'reinoa' ); ?></h1>
 		</div>
 	</div>
 
@@ -16,7 +16,7 @@
 
 			<!-- Category Filter -->
 			<?php
-			$terms = get_terms( array( 'taxonomy' => 'news_category', 'hide_empty' => true ) );
+			$terms = get_terms( array( 'taxonomy' => 'news_category', 'hide_empty' => false ) );
 			if ( ! is_wp_error( $terms ) && $terms ) :
 				$current_term = get_queried_object();
 			?>
@@ -69,7 +69,7 @@
 			<?php else : ?>
 
 				<div style="text-align:center;padding:80px 0;">
-					<p style="color:var(--color-text-light);"><?php _e( 'ニュースが見つかりませんでした。', 'reinoa' ); ?></p>
+					<p style="color:var(--color-text-light);"><?php _e( 'お知らせが見つかりませんでした。', 'reinoa' ); ?></p>
 				</div>
 
 			<?php endif; ?>

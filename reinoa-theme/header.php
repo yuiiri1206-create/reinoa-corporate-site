@@ -96,19 +96,20 @@ function reinoa_anchor_url( $hash ) {
 
 function reinoa_default_nav() {
 	$items = array(
-		'services'    => 'サービス',
-		'subsidy-menu' => '補助金メニュー',
-		'results'     => '支援実績',
-		'pricing'     => '料金',
-		'about'       => '会社概要',
-		'contact'     => 'お問い合わせ',
+		array( 'url' => reinoa_anchor_url( 'services' ),     'label' => 'サービス' ),
+		array( 'url' => reinoa_anchor_url( 'subsidy-menu' ), 'label' => '補助金メニュー' ),
+		array( 'url' => reinoa_anchor_url( 'results' ),      'label' => '支援実績' ),
+		array( 'url' => reinoa_anchor_url( 'pricing' ),      'label' => '料金' ),
+		array( 'url' => home_url( '/news/' ),                'label' => 'お知らせ' ),
+		array( 'url' => reinoa_anchor_url( 'about' ),        'label' => '会社概要' ),
+		array( 'url' => reinoa_anchor_url( 'contact' ),      'label' => 'お問い合わせ' ),
 	);
 	echo '<ul class="site-nav__list" role="list">';
-	foreach ( $items as $hash => $label ) {
+	foreach ( $items as $item ) {
 		printf(
 			'<li class="site-nav__item"><a href="%s">%s</a></li>',
-			esc_url( reinoa_anchor_url( $hash ) ),
-			esc_html( $label )
+			esc_url( $item['url'] ),
+			esc_html( $item['label'] )
 		);
 	}
 	echo '</ul>';
@@ -116,24 +117,21 @@ function reinoa_default_nav() {
 
 function reinoa_mobile_default_nav() {
 	$items = array(
-		'services'     => 'サービス',
-		'subsidy-menu' => '補助金メニュー',
-		'results'      => '支援実績',
-		'pricing'      => '料金',
-		'about'        => '会社概要',
-		'contact'      => 'お問い合わせ',
+		array( 'url' => home_url( '/' ),                     'label' => 'ホーム' ),
+		array( 'url' => reinoa_anchor_url( 'services' ),     'label' => 'サービス' ),
+		array( 'url' => reinoa_anchor_url( 'subsidy-menu' ), 'label' => '補助金メニュー' ),
+		array( 'url' => reinoa_anchor_url( 'results' ),      'label' => '支援実績' ),
+		array( 'url' => reinoa_anchor_url( 'pricing' ),      'label' => '料金' ),
+		array( 'url' => home_url( '/news/' ),                'label' => 'お知らせ' ),
+		array( 'url' => reinoa_anchor_url( 'about' ),        'label' => '会社概要' ),
+		array( 'url' => reinoa_anchor_url( 'contact' ),      'label' => 'お問い合わせ' ),
 	);
 	echo '<ul class="mobile-menu__list" role="list">';
-	// ホームへ戻るリンクを先頭に追加
-	printf(
-		'<li class="mobile-menu__item"><a href="%s">ホーム</a></li>',
-		esc_url( home_url( '/' ) )
-	);
-	foreach ( $items as $hash => $label ) {
+	foreach ( $items as $item ) {
 		printf(
 			'<li class="mobile-menu__item"><a href="%s">%s</a></li>',
-			esc_url( reinoa_anchor_url( $hash ) ),
-			esc_html( $label )
+			esc_url( $item['url'] ),
+			esc_html( $item['label'] )
 		);
 	}
 	echo '</ul>';
