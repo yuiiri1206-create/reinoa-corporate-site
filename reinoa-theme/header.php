@@ -23,7 +23,7 @@
 					<span>R</span>
 				</div>
 				<div class="site-logo__text">
-					<span class="site-logo__name">REINOA</span>
+					<span class="site-logo__name">RAYNOA</span>
 					<span class="site-logo__sub"><?php echo esc_html( reinoa_company( 'company_name' ) ); ?></span>
 				</div>
 			</a>
