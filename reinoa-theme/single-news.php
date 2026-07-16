@@ -6,7 +6,7 @@
 
 		<div class="page-hero">
 			<div class="container">
-				<span class="page-hero__en">News &amp; Topics</span>
+				<span class="page-hero__en">News &amp; Information</span>
 				<h1 class="page-hero__title" style="font-size:clamp(16px,2.2vw,24px);max-width:800px;margin:0 auto;line-height:1.6;">
 					<?php the_title(); ?>
 				</h1>
@@ -63,7 +63,7 @@
 
 					<a href="<?php echo esc_url( get_post_type_archive_link( 'news' ) ); ?>"
 					   class="btn btn--outline" style="flex-shrink:0;font-size:12px;padding:12px 24px;">
-						<?php _e( 'ニュース一覧へ', 'reinoa' ); ?>
+						<?php _e( 'お知らせ一覧へ', 'reinoa' ); ?>
 					</a>
 
 					<?php if ( $next_post ) : ?>

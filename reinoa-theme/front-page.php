@@ -372,8 +372,8 @@
 		<div class="container">
 			<div class="news__inner">
 				<div class="news__header section-header fade-in">
-					<span class="section-header__en">News &amp; Topics</span>
-					<h2 id="news-heading" class="section-header__title">ニュース</h2>
+					<span class="section-header__en">News &amp; Information</span>
+					<h2 id="news-heading" class="section-header__title">お知らせ</h2>
 					<a href="<?php echo esc_url( home_url( '/news' ) ); ?>" class="news__all-link">
 						すべて見る →
 					</a>
