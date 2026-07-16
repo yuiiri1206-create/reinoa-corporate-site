@@ -13,7 +13,7 @@
 							<div class="footer-logo__mark" aria-hidden="true">
 								<span>R</span>
 							</div>
-							<span class="footer-logo__name">REINOA</span>
+							<span class="footer-logo__name">RAYNOA</span>
 						</a>
 
 						<p class="footer-address" style="font-size:13px;color:rgba(255,255,255,0.55);line-height:2;margin-bottom:16px;">

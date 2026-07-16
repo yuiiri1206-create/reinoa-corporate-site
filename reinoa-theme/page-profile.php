@@ -44,7 +44,7 @@ get_header();
 						</div>
 					<?php endif; ?>
 					<p style="font-size:24px;font-family:var(--font-heading);color:var(--color-primary);font-weight:300;margin-bottom:6px;letter-spacing:0.05em;">高尾 郷介</p>
-					<p style="font-size:12px;letter-spacing:0.1em;color:var(--color-text-muted);margin-bottom:20px;">Kosuke Takao</p>
+					<p style="font-size:12px;letter-spacing:0.1em;color:var(--color-text-muted);margin-bottom:20px;">Kyosuke Takao</p>
 					<p style="display:inline-block;font-size:11px;letter-spacing:0.1em;color:var(--color-primary);border:1px solid var(--color-border);padding:6px 20px;">代表取締役</p>
 				</div>
 
@@ -62,7 +62,7 @@ get_header();
 							その後、株式会社ライトアップにて補助金支援事業の立上げと全国展開を牽引し、多数の中小企業・スタートアップの採択を実現。2024年、補助金申請支援に特化した株式会社レイノアを設立。
 						</p>
 						<p>
-							「科学的思考×ビジネス戦略×補助金専門知識」を組み合わせた独自のアプローチで、単なる書類作成代行を超えた戦略的な申請支援を提供する。
+							「科学的思考×ビジネス戦略×補助金専門知識」を組み合わせた独自のアプローチで、戦略的な申請支援を提供する。
 						</p>
 					</div>
 
@@ -110,13 +110,16 @@ get_header();
 
 				<div style="font-size:15px;color:var(--color-text-light);line-height:2.4;">
 					<p style="margin-bottom:1.5em;">
-						私がレイノアを立ち上げた動機は、「補助金の可能性を、もっと多くの中小企業に届けたい」という思いです。補助金制度は年々複雑化しており、情報収集から申請書作成・採択後の実績報告まで、自社だけで対応するのは容易ではありません。
+						私がレイノアを立ち上げた動機は、「補助金の可能性を、もっと多くの中小企業に届けたい」という思いからです。
 					</p>
 					<p style="margin-bottom:1.5em;">
-						レイノアでは、採択可能性の診断から始めて、事業の強みを最大限に引き出した計画書の作成、申請書類の整備、そして採択後の補助事業推進まで、一気通貫でサポートします。
+						補助金制度は年々複雑化しており、情報収集から申請書類の作成、採択後の実績報告まで、自社だけで対応することは容易ではありません。
+					</p>
+					<p style="margin-bottom:1.5em;">
+						株式会社レイノアでは、会社規模や事業内容のヒアリングから始まり、事業の強みを最大限に引き出した計画案の作成、申請書類の準備、そして採択後の補助事業推進まで、一気通貫でサポートします。
 					</p>
 					<p>
-						まずはお気軽にご相談ください。「どの補助金が使えるか分からない」という段階からでも、丁寧にご案内します。
+						どんな些細なことでも、まずはお気軽にご相談ください。
 					</p>
 				</div>
 
