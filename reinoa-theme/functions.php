@@ -609,3 +609,56 @@ add_action( 'wp_loaded', function () {
 		update_option( 'reinoa_news_cats_created_v1', true );
 	}
 } );
+
+/* ============================================
+   Auto-create Initial News Post
+   ============================================ */
+function reinoa_create_initial_news_post() {
+	// 本文が空の公開済みお知らせを非公開化
+	$empty_posts = get_posts( array(
+		'post_type'      => 'news',
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+	) );
+	foreach ( $empty_posts as $p ) {
+		if ( empty( trim( $p->post_content ) ) ) {
+			wp_update_post( array( 'ID' => $p->ID, 'post_status' => 'private' ) );
+		}
+	}
+
+	// 既に存在する場合はスキップ
+	$exists = get_posts( array(
+		'post_type'      => 'news',
+		'post_status'    => array( 'publish', 'private' ),
+		'title'          => 'HP開設のお知らせ',
+		'posts_per_page' => 1,
+	) );
+	if ( $exists ) {
+		return;
+	}
+
+	// 記事を作成
+	$post_id = wp_insert_post( array(
+		'post_title'    => 'HP開設のお知らせ',
+		'post_content'  => '株式会社レイノアの公式ホームページを開設いたしました。',
+		'post_status'   => 'publish',
+		'post_type'     => 'news',
+		'post_date'     => '2026-07-01 00:00:00',
+		'post_date_gmt' => '2026-06-30 15:00:00',
+	) );
+
+	if ( $post_id && ! is_wp_error( $post_id ) ) {
+		$term = get_term_by( 'name', '会社からのお知らせ', 'news_category' );
+		if ( $term ) {
+			wp_set_object_terms( $post_id, $term->term_id, 'news_category' );
+		}
+	}
+}
+add_action( 'after_switch_theme', 'reinoa_create_initial_news_post' );
+
+add_action( 'wp_loaded', function () {
+	if ( ! get_option( 'reinoa_initial_news_created_v1' ) ) {
+		reinoa_create_initial_news_post();
+		update_option( 'reinoa_initial_news_created_v1', true );
+	}
+} );
