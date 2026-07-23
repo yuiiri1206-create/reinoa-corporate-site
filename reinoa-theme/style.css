@@ -977,7 +977,7 @@ p:last-child {
 
 .news-item {
   display: grid;
-  grid-template-columns: 120px 80px 1fr;
+  grid-template-columns: 120px auto 1fr;
   gap: 24px;
   align-items: center;
   padding: 24px 0;
