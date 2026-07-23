@@ -75,7 +75,7 @@ function reinoa_scripts() {
 		'reinoa-style',
 		get_stylesheet_uri(),
 		array( 'reinoa-google-fonts' ),
-		REINOA_VERSION
+		filemtime( get_stylesheet_directory() . '/style.css' )
 	);
 
 	// Custom JS
@@ -83,7 +83,7 @@ function reinoa_scripts() {
 		'reinoa-main',
 		REINOA_URI . '/assets/js/main.js',
 		array(),
-		REINOA_VERSION,
+		filemtime( get_stylesheet_directory() . '/assets/js/main.js' ),
 		true
 	);
 
