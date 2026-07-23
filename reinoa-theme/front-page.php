@@ -51,6 +51,63 @@
 
 
 	<!-- ============================================
+	     News Section
+	     ============================================ -->
+	<section class="news section" aria-labelledby="news-heading">
+		<div class="container">
+			<div class="news__inner">
+				<div class="news__header section-header fade-in">
+					<span class="section-header__en">News &amp; Information</span>
+					<h2 id="news-heading" class="section-header__title">お知らせ</h2>
+					<a href="<?php echo esc_url( home_url( '/news' ) ); ?>" class="news__all-link">
+						すべて見る →
+					</a>
+				</div>
+
+				<div class="news__content fade-in">
+					<?php
+					$news_query = reinoa_get_news_posts( 5 );
+					if ( $news_query->have_posts() ) :
+					?>
+						<div class="news__list">
+							<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
+								<article class="news-item">
+									<time class="news-item__date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
+										<?php echo get_the_date( 'Y.m.d' ); ?>
+									</time>
+									<span class="news-item__category">
+										<?php echo esc_html( reinoa_get_news_category( get_the_ID() ) ); ?>
+									</span>
+									<h3 class="news-item__title">
+										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+									</h3>
+								</article>
+							<?php endwhile; wp_reset_postdata(); ?>
+						</div>
+					<?php else : ?>
+						<div class="news__list">
+							<?php
+							$sample_news = array(
+								array( 'date' => '2026.07.01', 'cat' => '会社からのお知らせ', 'title' => 'HP開設のお知らせ' ),
+							);
+							foreach ( $sample_news as $item ) : ?>
+								<article class="news-item">
+									<time class="news-item__date"><?php echo esc_html( $item['date'] ); ?></time>
+									<span class="news-item__category"><?php echo esc_html( $item['cat'] ); ?></span>
+									<h3 class="news-item__title">
+										<a href="<?php echo esc_url( home_url( '/news' ) ); ?>"><?php echo esc_html( $item['title'] ); ?></a>
+									</h3>
+								</article>
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+	</section><!-- .news -->
+
+
+	<!-- ============================================
 	     Services Section
 	     ============================================ -->
 	<section id="services" class="services section" aria-labelledby="services-heading">
@@ -363,67 +420,6 @@
 			</div>
 		</div>
 	</section><!-- .about -->
-
-
-	<!-- ============================================
-	     News Section
-	     ============================================ -->
-	<section class="news section" aria-labelledby="news-heading">
-		<div class="container">
-			<div class="news__inner">
-				<div class="news__header section-header fade-in">
-					<span class="section-header__en">News &amp; Information</span>
-					<h2 id="news-heading" class="section-header__title">お知らせ</h2>
-					<a href="<?php echo esc_url( home_url( '/news' ) ); ?>" class="news__all-link">
-						すべて見る →
-					</a>
-				</div>
-
-				<div class="news__content fade-in">
-					<?php
-					$news_query = reinoa_get_news_posts( 5 );
-					if ( $news_query->have_posts() ) :
-					?>
-						<div class="news__list">
-							<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
-								<article class="news-item">
-									<time class="news-item__date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
-										<?php echo get_the_date( 'Y.m.d' ); ?>
-									</time>
-									<span class="news-item__category">
-										<?php echo esc_html( reinoa_get_news_category( get_the_ID() ) ); ?>
-									</span>
-									<h3 class="news-item__title">
-										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-									</h3>
-								</article>
-							<?php endwhile; wp_reset_postdata(); ?>
-						</div>
-					<?php else : ?>
-						<div class="news__list">
-							<?php
-							$sample_news = array(
-								array( 'date' => '2026.04.15', 'cat' => 'お知らせ', 'title' => '省力化投資補助金の2026年度公募開始のご案内' ),
-								array( 'date' => '2026.03.10', 'cat' => '採択実績', 'title' => '廃棄物処理業（AI×ロボティクス）で省力化投資補助金 8,000万円採択' ),
-								array( 'date' => '2026.02.20', 'cat' => 'お知らせ', 'title' => 'ものづくり補助金 第20次公募の採択結果について' ),
-								array( 'date' => '2026.01.30', 'cat' => 'メディア掲載', 'title' => '補助金活用セミナー登壇のご報告（東京商工会議所）' ),
-								array( 'date' => '2024.09.01', 'cat' => 'お知らせ', 'title' => '株式会社レイノア設立のお知らせ' ),
-							);
-							foreach ( $sample_news as $item ) : ?>
-								<article class="news-item">
-									<time class="news-item__date"><?php echo esc_html( $item['date'] ); ?></time>
-									<span class="news-item__category"><?php echo esc_html( $item['cat'] ); ?></span>
-									<h3 class="news-item__title">
-										<a href="<?php echo esc_url( home_url( '/news' ) ); ?>"><?php echo esc_html( $item['title'] ); ?></a>
-									</h3>
-								</article>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
-				</div>
-			</div>
-		</div>
-	</section><!-- .news -->
 
 
 	<!-- ============================================
