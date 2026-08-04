@@ -89,6 +89,10 @@
 							<?php
 							$sample_news = array(
 								array( 'date' => '2026.07.01', 'cat' => '会社からのお知らせ', 'title' => 'HP開設のお知らせ' ),
+								array( 'date' => '2026.06.15', 'cat' => '補助金コラム', 'title' => '2026年度 ものづくり補助金の公募スケジュールについて' ),
+								array( 'date' => '2026.05.20', 'cat' => '採択実績', 'title' => '省力化投資補助金 8,000万円採択（廃棄物処理業）' ),
+								array( 'date' => '2026.04.10', 'cat' => '補助金コラム', 'title' => '中小企業新事業進出補助金とは？活用ポイントを解説' ),
+								array( 'date' => '2026.03.01', 'cat' => '会社からのお知らせ', 'title' => '補助金無料診断サービスを開始いたしました' ),
 							);
 							foreach ( $sample_news as $item ) : ?>
 								<article class="news-item">
