@@ -9,11 +9,11 @@
 		<div class="hero__bg">
 			<?php
 			$hero_image_id = get_theme_mod( 'hero_image' );
-			if ( $hero_image_id ) :
-				$hero_url = wp_get_attachment_image_url( $hero_image_id, 'reinoa-hero' );
+			$hero_url = $hero_image_id
+				? wp_get_attachment_image_url( $hero_image_id, 'reinoa-hero' )
+				: home_url( '/wp-content/uploads/2026/08/22812810_m.jpg' );
 			?>
-				<div class="hero__bg-image" style="background-image:url('<?php echo esc_url( $hero_url ); ?>');" role="img" aria-hidden="true"></div>
-			<?php endif; ?>
+			<div class="hero__bg-image" style="background-image:url('<?php echo esc_url( $hero_url ); ?>');" role="img" aria-hidden="true"></div>
 			<div class="hero__overlay" aria-hidden="true"></div>
 		</div>
 		<div class="hero__deco" aria-hidden="true">
@@ -23,20 +23,21 @@
 		</div>
 
 		<div class="hero__content">
-			<span class="hero__en-title">Subsidy Application Support Service</span>
+			<span class="hero__en-title">SUBSIDY APPLICATION SUPPORT</span>
 			<h1 class="hero__title">
-				<?php echo esc_html( get_theme_mod( 'hero_title_line1', '補助金で' ) ); ?><br>
-				<span><?php echo esc_html( get_theme_mod( 'hero_title_line2', '「攻めの投資」を加速' ) ); ?></span>
+				現場を変える投資を、<br>
+				<span>補助金で加速。</span>
 			</h1>
 			<p class="hero__lead">
-				<?php echo esc_html( get_theme_mod( 'hero_lead', '設備投資・新規事業・業務省力化をワンストップサポート。採択可能性診断から実績報告まで、補助金申請を一気通貫で伴走します。' ) ); ?>
+				設備導入、省力化、業務改善、新たな事業展開まで。<br>
+				活用できる補助金を幅広く検討し、申請から実績報告まで伴走します。
 			</p>
 			<div class="hero__actions">
 				<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--accent">
-					無料相談・採択可能性診断
+					無料で採択可能性を診断
 					<span class="btn__arrow" aria-hidden="true"></span>
 				</a>
-				<a href="<?php echo esc_url( home_url( '/service' ) ); ?>" class="btn btn--outline" style="border-color:rgba(255,255,255,0.5);color:#fff;">
+				<a href="<?php echo esc_url( reinoa_anchor_url( 'services' ) ); ?>" class="btn btn--outline" style="border-color:rgba(255,255,255,0.5);color:#fff;">
 					サービス詳細
 					<span class="btn__arrow" aria-hidden="true"></span>
 				</a>
